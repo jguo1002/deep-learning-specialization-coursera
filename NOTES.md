@@ -40,29 +40,29 @@ What are the dimensions of input matrix and weights?
 
 | Param      | Description | 
 | ----------- | ----------- | 
-| <img src="https://render.githubusercontent.com/render/math?math=$m$"> |  number of observations | 
-| <img src="https://render.githubusercontent.com/render/math?math=$n_x$"> |  number of features (input data) |
-| <img src="https://render.githubusercontent.com/render/math?math=$L$"> |  number of layers. <img src="https://render.githubusercontent.com/render/math?math=$l=0$">: input layer |
-| <img src="https://render.githubusercontent.com/render/math?math=$n^{[l]}$">  | number of units (features) at layer <img src="https://render.githubusercontent.com/render/math?math=$l$">. <img src="https://render.githubusercontent.com/render/math?math=$n^{[0]} = n_x$">   |
+| $m$ |  number of observations | 
+| $n_x$ |  number of features (input data) |
+| $L$ |  number of layers. $l=0$: input layer |
+| $n^{[l]}$  | number of units (features) at layer $l$. $n^{[0]} = n_x$   |
 |   |   |
 
 | Matrix      | Shape | 
 | ----------- | ----------- | 
-| <img src="https://render.githubusercontent.com/render/math?math=$X$"> |      <img src="https://render.githubusercontent.com/render/math?math=$(n_x, m)$"> | 
-| <img src="https://render.githubusercontent.com/render/math?math=$W^{[l]}$">   |   <img src="https://render.githubusercontent.com/render/math?math=$(n^{[l]}, n^{[l-1]}) $">  | 
-| <img src="https://render.githubusercontent.com/render/math?math=$Z^{[l]}$">   |  <img src="https://render.githubusercontent.com/render/math?math=$(n^{[l]}, m)$">   |
-| <img src="https://render.githubusercontent.com/render/math?math=$A^{[l]}$">   |  <img src="https://render.githubusercontent.com/render/math?math=$(n^{[l]}, m)$">   |
+| $X$ |      $(n_x, m)$ | 
+| $W^{[l]}$   |   $(n^{[l]}, n^{[l-1]}) $  | 
+| $Z^{[l]}$   |  $(n^{[l]}, m)$   |
+| $A^{[l]}$   |  $(n^{[l]}, m)$   |
 |   |   |
 
 To better memberize
 
-<img src="https://render.githubusercontent.com/render/math?math=$W^{[l]}$">:
+$W^{[l]}$:
 ```
 num of row: number of units of the next layer
 num of col: number of units of the current layer
 ```
 
-<img src="https://render.githubusercontent.com/render/math?math=$Z^{[l]}$"> and <img src="https://render.githubusercontent.com/render/math?math=$A^{[l]}$">:
+$Z^{[l]}$ and $A^{[l]}$:
 ```
 num of row: number of units of the next layer
 num of col: number of observations
@@ -77,8 +77,8 @@ Why do we use activation functions other than Sigmoid? What are the pros and con
 | ----------- | ----------- | ----------- | 
 | Sigmoid     | (0, 1)       |  good for output layer of binary classification   |
 | Tanh        | (-1, 1)  |  center data, mean of data is close to 0, makes learning for next layer a bit easier  |
-| ReLU        |  (0, <img src="https://render.githubusercontent.com/render/math?math=$\infty$">)   |  derivative of slope is 1 when z > 0,  is 0 when z < 0  | 
-| Leasky ReLU  |  (-<img src="https://render.githubusercontent.com/render/math?math=$\infty$">, <img src="https://render.githubusercontent.com/render/math?math=$\infty$">)    |         |
+| ReLU        |  (0, $\infty$)   |  derivative of slope is 1 when z > 0,  is 0 when z < 0  | 
+| Leasky ReLU  |  (-$\infty$, $\infty$)    |         |
 
 
 
