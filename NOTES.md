@@ -44,7 +44,8 @@ What are the dimensions of input matrix and weights?
 | $n_x$ |  number of features (input data) |
 | $L$ |  number of layers. $l=0$: input layer |
 | $n^{[l]}$  | number of units (features) at layer $l$. $n^{[0]} = n_x$   |
-|   |   |
+
+
 
 | Matrix      | Shape | 
 | ----------- | ----------- | 
@@ -52,7 +53,8 @@ What are the dimensions of input matrix and weights?
 | $W^{[l]}$   |   $(n^{[l]}, n^{[l-1]}) $  | 
 | $Z^{[l]}$   |  $(n^{[l]}, m)$   |
 | $A^{[l]}$   |  $(n^{[l]}, m)$   |
-|   |   |
+
+
 
 To better memberize
 
@@ -78,7 +80,7 @@ Why do we use activation functions other than Sigmoid? What are the pros and con
 | Sigmoid     | (0, 1)       |  good for output layer of binary classification   |
 | Tanh        | (-1, 1)  |  center data, mean of data is close to 0, makes learning for next layer a bit easier  |
 | ReLU        |  (0, $\infty$)   |  derivative of slope is 1 when z > 0,  is 0 when z < 0  | 
-| Leasky ReLU  |  (-$\infty$, $\infty$)    |         |
+| Leasky ReLU  |  (-$\infty$, $\infty$)    |
 
 
 
@@ -146,7 +148,7 @@ False. Forward propagation propagates the input through the layers, although for
 
 ### Week 1: Practical Aspects of Deep Learning
 
-What are the differences when creating train, dev, test sets in traditional ML and DL?
+#### `What are the differences when creating train, dev, test sets in traditional ML and DL?`
 
 >In traditional ML, train/dev/test split may be 60% / 20% / 20%. 
 >
@@ -154,14 +156,65 @@ What are the differences when creating train, dev, test sets in traditional ML a
 >
 >Side note: not having a test set might be okay. 
 
-What should we do if the variance or bias is high? 
+`What should we do if the variance or bias is high? `
 
 | Problem | Try |
 | -- | -- | 
 | High bias | Bigger network <br/> Train longer <br/> (NN architecture search)|
 | High variance | More data <br/> Regularization <br/> (NN architecture search) | 
-|  |  |
 
+
+`Why regularization reduces overfitting? `
+> If lambda is large, weights will be small or close to zero because gradient descent minimizes the cost function. 
+>
+> small weights -> decrease impacts of some hidden units -> simpler network -> not overfit
+
+
+`What are the differences between L1 and L2 regularization? `
+
+| Regularization | Penalize | $W$ | Feature selection | 
+| -- | -- | -- | -- |
+| L1 | sum of absolute values of the weights | sparse | Yes |
+| L2 | sum of squares of the weights | non-sparse | No |  
+
+
+`What is dropout regularization? Why does it work? `
+
+> Dropout regularization randomly switch off some hidden units so they do not learn anything and the NN will be simpler  
+
+`What should we pay attention to when implementing dropout during train / test time?`
+|  | apply dropout | keep_prob | 
+| -- | -- | -- |
+| Train | Yes | Yes |
+| Test | No | No | 
+```
+D1 = np.rand(a, b)
+D1 = (D1 < keep_prob).astype(int)
+A1 = A1 * D1 
+A1 = A1 / keep_prob
+```
+> Note the devriatives during backward also need to scale 
+```
+dA1 = dA1 * D1
+dA1 = dA1 / keep_prob
+```
+
+
+`What is weight decay?`
+> A regularization technique (such as L2 regularization) that results in gradient descent shrinking the weights on every iteration.
+
+`Why do we normalize the inputs x?`
+> It makes the cost function easier and faster to optimize
+
+`What is vanishing / exploding gradient ? `
+
+> Derivatives of each layer are multiplied layer by layer (inputs times gradient). If we have a sigmoid or tanh activation function, derivates are always a fraction. 
+> 
+> During backpropagate, fractions are multiplying for many times, the gradient decreases expotentially and the weights of the initial layer will be very small, which makes it hard to learn. 
+
+`How to deal with vanishing gradient?`
+
+> A partial solution: force the variance of $W$ to be constant and smaller. A recommended value is $\frac{1}{n}$ but it depends on the activation function.  
 
 
 ### Week 2: Optimization Algorithms
@@ -174,7 +227,8 @@ What are the differences between batch , mini-batch, and stochatic gradient desc
 | Batch  | m | too long |
 | Stochatic | 1 | lose speed up by vectorization |
 | Mini-batch | (1, m) | 
-|  |  |
+
+
 
 How to choose mini-batch size? 
 ```
@@ -186,6 +240,8 @@ else:
 It depends on the context, we should test with different sizes 
 ```
 
+`What is momentum?`
+> Momentum is a method to dampen down the changes in gradients and accelerate gradients vectors in the right direction using exponentially weighted averages. 
 
 
 ### Week 3: Hyperparameter Tuning, Batch Normalization and Programming Frameworks
