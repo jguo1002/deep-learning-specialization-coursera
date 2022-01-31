@@ -5,7 +5,7 @@ Coursera deep learning specialization notes and code
 
 Notes are taken in the format of QA. 
 
-## Table of Content 
+## Table of Contents
 
 - [Course 1: Neural Networks and Deep Learning](#course-1-neural-networks-and-deep-learning)
     - [Week 3: Shallow Neural Networks](#week-3-shallow-neural-networks)
@@ -13,7 +13,7 @@ Notes are taken in the format of QA.
 - [Course 2: Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization](#course-2-improving-deep-neural-networks)
     - [Week 1: Practical Aspects of Deep Learning](#week-1-practical-aspects-of-deep-learning)
     - [Week 2: Optimization Algorithms](#week-2-optimization-algorithms)
-    - [Week 3: Hyperparameter Tuning, Batch Normalization and Programming Frameworks]()
+    - [Week 3: Hyperparameter Tuning, Batch Normalization and Programming Frameworks](#week-3-hyperparameter-tuning-batch-normalization-and-programming-frameworks)
 
 
 
@@ -26,7 +26,7 @@ Week 1 is the overview of the course and specialization.
 
 ### Week 1 Introduction to Deep Learning
 
-What is the differences between structure and unstructured data? 
+**What is the difference between structure and unstructured data?** 
 
 |       | Features | Example |
 | ----------- | ----------- | --- |
@@ -36,7 +36,7 @@ What is the differences between structure and unstructured data?
 
 ### Week 2: Neural Networks Basics
 
-What are the dimensions of input matrix and weights?
+**What are the dimensions of input matrix and weights?**
 
 | Param      | Description | 
 | ----------- | ----------- | 
@@ -69,11 +69,12 @@ num of col: number of units of the current layer
 num of row: number of units of the next layer
 num of col: number of observations
 ```
+[⬆️ Back to top](#table-of-contents)
 
 
 ### Week 3: Shallow Neural Networks
 
-Why do we use activation functions other than Sigmoid? What are the pros and cons of activation functions? 
+**What are the pros and cons of activation functions?**
 
 | Activation Function      | Output | Characteristic |
 | ----------- | ----------- | ----------- | 
@@ -84,13 +85,13 @@ Why do we use activation functions other than Sigmoid? What are the pros and con
 
 
 
-Why non-linear activation functions? 
+**Why non-linear activation functions?** 
 ```
 If we use linear activation functions, no matter how many layers you have, the NN is just computing a linear function. 
 ```
 
 
-Why do we usually initialize W as small random values? 
+**Why do we usually initialize W as small random values?** 
 
 ```
 large W -> large Z (Z = WX + b) -> end up at the flat parts of Sigmoid function 
@@ -99,7 +100,7 @@ large W -> large Z (Z = WX + b) -> end up at the flat parts of Sigmoid function
 If you're not using Sigmoid or Tanh activation functions, it is less of an issue. But note if you're doing a binary classification, the output layer will be a Sigmoid function. 
 ```
 
-Logistic regression’s weights w should be initialized randomly rather than to all zeros, because if you initialize to all zeros, then logistic regression will fail to learn a useful decision boundary because it will fail to “break symmetry”, True/False?
+**Logistic regression’s weights w should be initialized randomly rather than to all zeros, because if you initialize to all zeros, then logistic regression will fail to learn a useful decision boundary because it will fail to “break symmetry”, True/False?**
 
 ```
 Flase. Logistic Regression doesn't have a hidden layer. If you initialize the weights to zeros, the first example x fed in the logistic regression will output zero but the derivatives of the Logistic Regression depend on the input x (because there's no hidden layer) which is not zero. 
@@ -112,32 +113,35 @@ So at the second iteration, the weights values follow x's distribution and are d
 >Reference: [Symmetry Breaking versus Zero Initialization](https://community.deeplearning.ai/t/symmetry-breaking-versus-zero-initialization/16061)
 
 
-A = np.random.randn(4,3); B = np.sum(A, axis = 1, keepdims = True). 
-What will be B.shape? 
+**A = np.random.randn(4,3); B = np.sum(A, axis = 1, keepdims = True). 
+What will be B.shape?**
 ```
 (4, 1)
 We use (keepdims = True) to make sure that A.shape is (4,1) and not (4, ). It makes our code more robust. 
 ```
+[⬆️ Back to top](#table-of-contents)
 
 ### Week 4: Deep Neural Networks
 
-What is the relationship between # of hidden units and # of layers? 
+**What is the relationship between # of hidden units and # of layers?** 
 
 ```
 Informally: for equal performance shallower networks require exponentially more hidden units to compute. 
 ```
 
-What is the intuition about deep representation? 
+**What is the intuition about deep representation?**
 
 ```
 Intuitively, deeper layers compute more complex things such as eyes instead of edges. 
 ```
 
-Vectorization allows you to compute forward propagation in an LL-layer neural network without an explicit for-loop (or any other explicit iterative loop) over the layers l=1, 2, …,L. True/False?
+**Vectorization allows you to compute forward propagation in an LL-layer neural network without an explicit for-loop (or any other explicit iterative loop) over the layers l=1, 2, …,L. True/False?**
+
 ```
 False. Forward propagation propagates the input through the layers, although for shallow networks we may just write all the lines. In a deeper network, we cannot avoid a for loop iterating over the layers.
 ```
 
+[⬆️ Back to top](#table-of-contents)
 
 ## Course 2: Improving Deep Neural Networks
 
@@ -148,7 +152,7 @@ False. Forward propagation propagates the input through the layers, although for
 
 ### Week 1: Practical Aspects of Deep Learning
 
-#### `What are the differences when creating train, dev, test sets in traditional ML and DL?`
+**What are the differences when creating train, dev, test sets in traditional ML and DL?**
 
 >In traditional ML, train/dev/test split may be 60% / 20% / 20%. 
 >
@@ -156,7 +160,7 @@ False. Forward propagation propagates the input through the layers, although for
 >
 >Side note: not having a test set might be okay. 
 
-`What should we do if the variance or bias is high? `
+**What should we do if the variance or bias is high?**
 
 | Problem | Try |
 | -- | -- | 
@@ -164,13 +168,13 @@ False. Forward propagation propagates the input through the layers, although for
 | High variance | More data <br/> Regularization <br/> (NN architecture search) | 
 
 
-`Why regularization reduces overfitting? `
+**Why regularization reduces overfitting?**
 > If lambda is large, weights will be small or close to zero because gradient descent minimizes the cost function. 
 >
 > small weights -> decrease impacts of some hidden units -> simpler network -> not overfit
 
 
-`What are the differences between L1 and L2 regularization? `
+**What are the differences between L1 and L2 regularization?**
 
 | Regularization | Penalize | <img src="https://render.githubusercontent.com/render/math?math=$W$"> | Feature selection | 
 | -- | -- | -- | -- |
@@ -178,11 +182,11 @@ False. Forward propagation propagates the input through the layers, although for
 | L2 | sum of squares of the weights | non-sparse | No |  
 
 
-`What is dropout regularization? Why does it work? `
+**What is dropout regularization? Why does it work?**
 
 > Dropout regularization randomly switch off some hidden units so they do not learn anything and the NN will be simpler  
 
-`What should we pay attention to when implementing dropout during train / test time?`
+**What should we pay attention to when implementing dropout during train / test time?**
 |  | apply dropout | keep_prob | 
 | -- | -- | -- |
 | Train | Yes | Yes |
@@ -200,22 +204,23 @@ dA1 = dA1 / keep_prob
 ```
 
 
-`What is weight decay?`
+**What is weight decay?**
 > A regularization technique (such as L2 regularization) that results in gradient descent shrinking the weights on every iteration.
 
-`Why do we normalize the inputs x?`
+**Why do we normalize the inputs x?**
 > It makes the cost function easier and faster to optimize
 
-`What is vanishing / exploding gradient ? `
+**What is vanishing / exploding gradient ?**
 
 > Derivatives of each layer are multiplied layer by layer (inputs times gradient). If we have a sigmoid or tanh activation function, derivates are always a fraction. 
 > 
 > During backpropagate, fractions are multiplying for many times, the gradient decreases expotentially and the weights of the initial layer will be very small, which makes it hard to learn. 
 
-`How to deal with vanishing gradient?`
+**How to deal with vanishing gradient?**
 
 > A partial solution: force the variance of <img src="https://render.githubusercontent.com/render/math?math=$W$"> to be constant and smaller. A recommended value is <img src="https://render.githubusercontent.com/render/math?math=$\frac{1}{n}$"> but it depends on the activation function.  
 
+[⬆️ Back to top](#table-of-contents)
 
 ### Week 2: Optimization Algorithms
 
@@ -230,7 +235,7 @@ What are the differences between batch , mini-batch, and stochatic gradient desc
 
 
 
-How to choose mini-batch size? 
+**How to choose mini-batch size?**
 ```
 if m <= 2000: 
     use batch gd
@@ -240,11 +245,19 @@ else:
 It depends on the context, we should test with different sizes 
 ```
 
-`What is momentum?`
-> Momentum is a method to dampen down the changes in gradients and accelerate gradients vectors in the right direction using exponentially weighted averages. 
+**What is momentum?**
+
+Momentum is a method to dampen down the changes in gradients and accelerate gradients vectors in the right direction using exponentially weighted averages. 
 
 
 ### Week 3: Hyperparameter Tuning, Batch Normalization and Programming Frameworks
 
 
+**Why batch normalization?**
 
+Normalization can make training faster and hyperparameters more robust. 
+
+Values of each hidden layer are changing all the time because of changes in <img src="https://render.githubusercontent.com/render/math?math=$W$"> and <img src="https://render.githubusercontent.com/render/math?math=$b$">, suffering from the problem of covariance shift. Batch normalization guarantees the mean and variance of features of each layer (e.g., <img src="https://render.githubusercontent.com/render/math?math=$Z^{[2]}_1$">, <img src="https://render.githubusercontent.com/render/math?math=$Z^{[2]}_2$">) keep the same no matter how actual values of each node changes. 
+It allows each layer to learn by itself (more independently than no batch normalization), and speed up learning. 
+
+Mean and variance are governed by two learnable parameters <img src="https://render.githubusercontent.com/render/math?math=$\gamma$"> and <img src="https://render.githubusercontent.com/render/math?math=$\beta$">. Adding <img src="https://render.githubusercontent.com/render/math?math=$\gamma$"> and <img src="https://render.githubusercontent.com/render/math?math=$\beta$"> is because we don't want all the layers have the same mean and variance (mean = 0, variance = 1). 
