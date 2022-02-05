@@ -86,60 +86,63 @@ num of col: number of observations
 
 
 **Why non-linear activation functions?** 
-```
-If we use linear activation functions, no matter how many layers you have, the NN is just computing a linear function. 
-```
+
+> If we use linear activation functions, no matter how many layers you have, the NN is just computing a linear function. 
 
 
 **Why do we usually initialize W as small random values?** 
 
-```
-large W -> large Z (Z = WX + b) -> end up at the flat parts of Sigmoid function 
+> large W -> large Z (Z = WX + b) -> end up at the flat parts of Sigmoid function 
 -> gradient will be small -> gradient descent will be slow -> learning will be slow
+>
+>If you're not using Sigmoid or Tanh activation functions, it is less of an issue. But note if you're doing a binary classification, the output layer will be a Sigmoid function. 
 
-If you're not using Sigmoid or Tanh activation functions, it is less of an issue. But note if you're doing a binary classification, the output layer will be a Sigmoid function. 
-```
 
 **Logistic regression’s weights w should be initialized randomly rather than to all zeros, because if you initialize to all zeros, then logistic regression will fail to learn a useful decision boundary because it will fail to “break symmetry”, True/False?**
 
-```
-Flase. Logistic Regression doesn't have a hidden layer. If you initialize the weights to zeros, the first example x fed in the logistic regression will output zero but the derivatives of the Logistic Regression depend on the input x (because there's no hidden layer) which is not zero. 
 
-So at the second iteration, the weights values follow x's distribution and are different from each other if x is not a constant vector. 
-```
-
->But in deep learning we should randomly initialize either W or b to "break symmetry". Using non-zero initialization but making them all the same does not work either. Though we can *learn* new values, but the values we get are symmetric, means it's the same as a network with a single neuron. 
+> False. Logistic Regression doesn't have a hidden layer. If you initialize the weights to zeros, the first example x fed in the logistic regression will output zero but the derivatives of the Logistic Regression depend on the input x (because there's no hidden layer) which is not zero. 
+> 
+> So at the second iteration, the weights values follow x's distribution and are different from each other if x is not a constant vector. 
+>
+> But in deep learning we should randomly initialize either $W$ or $b$ to "break symmetry". 
+If both $W$ and $b$ values zero, $A^{[1]}$ will be 0 because *tanh(0)=0*. 
+>Using non-zero initialization but making them all the same does not work either. Though we can *learn* new values, but the values we get are symmetric, means it's the same as a network with a single neuron. 
 >
 >Reference: [Symmetry Breaking versus Zero Initialization](https://community.deeplearning.ai/t/symmetry-breaking-versus-zero-initialization/16061)
 
 
 **A = np.random.randn(4,3); B = np.sum(A, axis = 1, keepdims = True). 
 What will be B.shape?**
-```
-(4, 1)
-We use (keepdims = True) to make sure that A.shape is (4,1) and not (4, ). It makes our code more robust. 
-```
+
+<details>
+    <summary>Click to see answer</summary>
+    
+> (4, 1)
+> 
+>We use (keepdims = True) to make sure that A.shape is (4,1) and not (4, ). It makes our code more robust. 
+
+</details>
+
+
 [⬆️ Back to top](#table-of-contents)
 
 ### Week 4: Deep Neural Networks
 
 **What is the relationship between # of hidden units and # of layers?** 
 
-```
-Informally: for equal performance shallower networks require exponentially more hidden units to compute. 
-```
+> Informally: for equal performance shallower networks require exponentially more hidden units to compute. 
 
 **What is the intuition about deep representation?**
 
-```
-Intuitively, deeper layers compute more complex things such as eyes instead of edges. 
-```
+> Intuitively, deeper layers compute more complex things such as eyes instead of edges. 
 
 **Vectorization allows you to compute forward propagation in an LL-layer neural network without an explicit for-loop (or any other explicit iterative loop) over the layers l=1, 2, …,L. True/False?**
 
-```
-False. Forward propagation propagates the input through the layers, although for shallow networks we may just write all the lines. In a deeper network, we cannot avoid a for loop iterating over the layers.
-```
+
+
+> False. Forward propagation propagates the input through the layers, although for shallow networks we may just write all the lines. In a deeper network, we cannot avoid a for loop iterating over the layers.
+
 
 [⬆️ Back to top](#table-of-contents)
 
@@ -233,8 +236,6 @@ What are the differences between batch , mini-batch, and stochatic gradient desc
 | Stochatic | 1 | lose speed up by vectorization |
 | Mini-batch | (1, m) | 
 
-
-
 **How to choose mini-batch size?**
 ```
 if m <= 2000: 
@@ -245,19 +246,80 @@ else:
 It depends on the context, we should test with different sizes 
 ```
 
+**Formula of bias correction in exponentially weighted averages?**
+
+<details>
+    <summary>Click to see answer</summary>
+
+>$v_t = \beta v_{t-1} + (1-\beta) \theta_t$
+>
+> $v^{corrected}_t = \frac{v_t}{1-\beta^t}$
+
+</details>
+
 **What is momentum?**
 
-Momentum is a method to dampen down the changes in gradients and accelerate gradients vectors in the right direction using exponentially weighted averages. 
+> Momentum is a method to dampen down the changes in gradients and accelerate gradients vectors in the right direction using exponentially weighted averages. 
 
+**Which of these is NOT a good learning rate decay scheme? Here, t is the epoch number.**
+
+1. $\alpha=0.95^t\alpha_0$
+2. $\alpha=e^t\alpha_0$
+3. $\alpha=\frac{1}{1+2*t}\alpha_0$
+4. $\alpha=\frac{1}{\sqrt{t}}\alpha_0$
+
+<details>
+    <summary>Click to see answer</summary>
+
+> $\alpha=e^t\alpha_0$ explodes $\alpha$ instead of decaying it
+
+</details>
+
+<br />
 
 ### Week 3: Hyperparameter Tuning, Batch Normalization and Programming Frameworks
 
 
 **Why batch normalization?**
 
-Normalization can make training faster and hyperparameters more robust. 
+> Normalization can make training faster and hyperparameters more robust. 
+>
+> Values of each hidden layer are changing all the time because of changes in $W$ and $b$, suffering from the problem of covariance shift. Batch normalization guarantees the mean and variance of features of each layer (e.g., $Z^{[2]}_1$, $Z^{[2]}_2$) keep the same no matter how actual values of each node changes. 
+> It allows each layer to learn by itself (more independently than no batch normalization), and speed up learning. 
+>
+> Mean and variance are governed by two learnable parameters $\gamma$ and $\beta$. Adding $\gamma$ and $\beta$ is because we don't want all the layers have the same mean and variance (mean = 0, variance = 1).
 
-Values of each hidden layer are changing all the time because of changes in $W$ and $b$, suffering from the problem of covariance shift. Batch normalization guarantees the mean and variance of features of each layer (e.g., $Z^{[2]}_1$, $Z^{[2]}_2$) keep the same no matter how actual values of each node changes. 
-It allows each layer to learn by itself (more independently than no batch normalization), and speed up learning. 
 
-Mean and variance are governed by two learnable parameters $\gamma$ and $\beta$. Adding $\gamma$ and $\beta$ is because we don't want all the layers have the same mean and variance (mean = 0, variance = 1). 
+**Batch normalization fomula?**
+
+<details>
+    <summary>Click to see answer</summary>
+
+> $z_{norm}^{(i)} = \frac{z^{(i) - \mu}}{\sqrt{\sigma^2 + \epsilon}}$
+
+</details>
+
+<br />
+
+
+**If searching among a large number of hyperparameters, should you try values in a gird or by random? Why**
+
+> Random. 
+>
+> Grid method is okay if # of hyperparameter is small. 
+> In DL, it is difficult to know in advance which hyperparameter is more important. Random method allow us to try more distinct values that are potentially important. 
+
+**What the hyperparamers and their default values?**
+
+| Hyperparameter | common value | 
+| --- | --- |
+| learning rate $\alpha$ | $r\in [-4,0], \alpha=10^r$ | 
+| momentum $\beta$ | around 0.9 | 
+| mini-batch size | $2^n$ | 
+| # of hidden units | - |
+| learning rate decay | $10^r$ |
+| # of layers $L$ | - | 
+| batch normalization $\beta_1$, $\beta_2$, $\epsilon$ | 0.9, 0.99, $10^{-8}$ | 
+
+
+[⬆️ Back to top](#table-of-contents)
