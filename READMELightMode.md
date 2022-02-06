@@ -40,31 +40,31 @@ Week 1 is the overview of the course and specialization.
 
 | Param      | Description | 
 | ----------- | ----------- | 
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}m"> |  number of observations | 
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}n_x"> |  number of features (input data) |
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}L"> |  number of layers. <img src="https://render.githubusercontent.com/render/math?math=\color{white}l=0">: input layer |
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}n^{[l]}">  | number of units (features) at layer <img src="https://render.githubusercontent.com/render/math?math=\color{white}l">. <img src="https://render.githubusercontent.com/render/math?math=\color{white}n^{[0]} = n_x">   |
+| <img src="https://render.githubusercontent.com/render/math?math=m"> |  number of observations | 
+| <img src="https://render.githubusercontent.com/render/math?math=n_x"> |  number of features (input data) |
+| <img src="https://render.githubusercontent.com/render/math?math=L"> |  number of layers. <img src="https://render.githubusercontent.com/render/math?math=l=0">: input layer |
+| <img src="https://render.githubusercontent.com/render/math?math=n^{[l]}">  | number of units (features) at layer <img src="https://render.githubusercontent.com/render/math?math=l">. <img src="https://render.githubusercontent.com/render/math?math=n^{[0]} = n_x">   |
 
 
 
 | Matrix      | Shape | 
 | ----------- | ----------- | 
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}X"> |      <img src="https://render.githubusercontent.com/render/math?math=\color{white}(n_x, m)"> | 
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}W^{[l]}">   |   <img src="https://render.githubusercontent.com/render/math?math=\color{white}(n^{[l]}, n^{[l-1]}) ">  | 
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}Z^{[l]}">   |  <img src="https://render.githubusercontent.com/render/math?math=\color{white}(n^{[l]}, m)">   |
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}A^{[l]}">   |  <img src="https://render.githubusercontent.com/render/math?math=\color{white}(n^{[l]}, m)">   |
+| <img src="https://render.githubusercontent.com/render/math?math=X"> |      <img src="https://render.githubusercontent.com/render/math?math=(n_x, m)"> | 
+| <img src="https://render.githubusercontent.com/render/math?math=W^{[l]}">   |   <img src="https://render.githubusercontent.com/render/math?math=(n^{[l]}, n^{[l-1]}) ">  | 
+| <img src="https://render.githubusercontent.com/render/math?math=Z^{[l]}">   |  <img src="https://render.githubusercontent.com/render/math?math=(n^{[l]}, m)">   |
+| <img src="https://render.githubusercontent.com/render/math?math=A^{[l]}">   |  <img src="https://render.githubusercontent.com/render/math?math=(n^{[l]}, m)">   |
 
 
 
 To better memberize
 
-<img src="https://render.githubusercontent.com/render/math?math=\color{white}W^{[l]}">:
+<img src="https://render.githubusercontent.com/render/math?math=W^{[l]}">:
 ```
 num of row: number of units of the next layer
 num of col: number of units of the current layer
 ```
 
-<img src="https://render.githubusercontent.com/render/math?math=\color{white}Z^{[l]}"> and <img src="https://render.githubusercontent.com/render/math?math=\color{white}A^{[l]}">:
+<img src="https://render.githubusercontent.com/render/math?math=Z^{[l]}"> and <img src="https://render.githubusercontent.com/render/math?math=A^{[l]}">:
 ```
 num of row: number of units of the next layer
 num of col: number of observations
@@ -80,8 +80,8 @@ num of col: number of observations
 | ----------- | ----------- | ----------- | 
 | Sigmoid     | (0, 1)       |  good for output layer of binary classification   |
 | Tanh        | (-1, 1)  |  center data, mean of data is close to 0, makes learning for next layer a bit easier  |
-| ReLU        |  (0, <img src="https://render.githubusercontent.com/render/math?math=\color{white}\infty">)   |  derivative of slope is 1 when z > 0,  is 0 when z < 0  | 
-| Leasky ReLU  |  (-<img src="https://render.githubusercontent.com/render/math?math=\color{white}\infty">, <img src="https://render.githubusercontent.com/render/math?math=\color{white}\infty">)    |
+| ReLU        |  (0, <img src="https://render.githubusercontent.com/render/math?math=\infty">)   |  derivative of slope is 1 when z > 0,  is 0 when z < 0  | 
+| Leasky ReLU  |  (-<img src="https://render.githubusercontent.com/render/math?math=\infty">, <img src="https://render.githubusercontent.com/render/math?math=\infty">)    |
 
 
 
@@ -105,8 +105,8 @@ num of col: number of observations
 > 
 > So at the second iteration, the weights values follow x's distribution and are different from each other if x is not a constant vector. 
 >
-> But in deep learning we should randomly initialize either <img src="https://render.githubusercontent.com/render/math?math=\color{white}W"> or <img src="https://render.githubusercontent.com/render/math?math=\color{white}b"> to "break symmetry". 
-If both <img src="https://render.githubusercontent.com/render/math?math=\color{white}W"> and <img src="https://render.githubusercontent.com/render/math?math=\color{white}b"> values zero, <img src="https://render.githubusercontent.com/render/math?math=\color{white}A^{[1]}"> will be 0 because *tanh(0)=0*. 
+> But in deep learning we should randomly initialize either <img src="https://render.githubusercontent.com/render/math?math=W"> or <img src="https://render.githubusercontent.com/render/math?math=b"> to "break symmetry". 
+If both <img src="https://render.githubusercontent.com/render/math?math=W"> and <img src="https://render.githubusercontent.com/render/math?math=b"> values zero, <img src="https://render.githubusercontent.com/render/math?math=A^{[1]}"> will be 0 because *tanh(0)=0*. 
 >Using non-zero initialization but making them all the same does not work either. Though we can *learn* new values, but the values we get are symmetric, means it's the same as a network with a single neuron. 
 >
 >Reference: [Symmetry Breaking versus Zero Initialization](https://community.deeplearning.ai/t/symmetry-breaking-versus-zero-initialization/16061)
@@ -179,7 +179,7 @@ What will be B.shape?**
 
 **What are the differences between L1 and L2 regularization?**
 
-| Regularization | Penalize | <img src="https://render.githubusercontent.com/render/math?math=\color{white}W"> | Feature selection | 
+| Regularization | Penalize | <img src="https://render.githubusercontent.com/render/math?math=W"> | Feature selection | 
 | -- | -- | -- | -- |
 | L1 | sum of absolute values of the weights | sparse | Yes |
 | L2 | sum of squares of the weights | non-sparse | No |  
@@ -221,7 +221,7 @@ dA1 = dA1 / keep_prob
 
 **How to deal with vanishing gradient?**
 
-> A partial solution: force the variance of <img src="https://render.githubusercontent.com/render/math?math=\color{white}W"> to be constant and smaller. A recommended value is <img src="https://render.githubusercontent.com/render/math?math=\color{white}\frac{1}{n}"> but it depends on the activation function.  
+> A partial solution: force the variance of <img src="https://render.githubusercontent.com/render/math?math=W"> to be constant and smaller. A recommended value is <img src="https://render.githubusercontent.com/render/math?math=\frac{1}{n}"> but it depends on the activation function.  
 
 [⬆️ Back to top](#table-of-contents)
 
@@ -251,11 +251,13 @@ It depends on the context, we should test with different sizes
 <details>
     <summary>Click to see answer</summary>
 
-><img src="https://render.githubusercontent.com/render/math?math=\color{white}v_t = \beta v_{t-1} + (1-\beta) \theta_t">
+><img src="https://render.githubusercontent.com/render/math?math=v_t = \beta v_{t-1} + (1-\beta) \theta_t">
 >
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}v^{corrected}_t = \frac{v_t}{1-\beta^t}">
+> <img src="https://render.githubusercontent.com/render/math?math=v^{corrected}_t = \frac{v_t}{1-\beta^t}">
 
 </details>
+
+<br />
 
 **What is momentum?**
 
@@ -263,15 +265,34 @@ It depends on the context, we should test with different sizes
 
 **Which of these is NOT a good learning rate decay scheme? Here, t is the epoch number.**
 
-1. <img src="https://render.githubusercontent.com/render/math?math=\color{white}\alpha=0.95^t\alpha_0">
-2. <img src="https://render.githubusercontent.com/render/math?math=\color{white}\alpha=e^t\alpha_0">
-3. <img src="https://render.githubusercontent.com/render/math?math=\color{white}\alpha=\frac{1}{1+2*t}\alpha_0">
-4. <img src="https://render.githubusercontent.com/render/math?math=\color{white}\alpha=\frac{1}{\sqrt{t}}\alpha_0">
+1. <img src="https://render.githubusercontent.com/render/math?math=\alpha=0.95^t\alpha_0">
+2. <img src="https://render.githubusercontent.com/render/math?math=\alpha=e^t\alpha_0">
+3. <img src="https://render.githubusercontent.com/render/math?math=\alpha=\frac{1}{1+2*t}\alpha_0">
+4. <img src="https://render.githubusercontent.com/render/math?math=\alpha=\frac{1}{\sqrt{t}}\alpha_0">
 
 <details>
     <summary>Click to see answer</summary>
 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}\alpha=e^t\alpha_0"> explodes <img src="https://render.githubusercontent.com/render/math?math=\color{white}\alpha"> instead of decaying it
+> <img src="https://render.githubusercontent.com/render/math?math=\alpha=e^t\alpha_0"> explodes <img src="https://render.githubusercontent.com/render/math?math=\alpha"> instead of decaying it
+
+</details>
+
+<br />
+
+**What is the process of parameter update in Adam?**
+
+<details>
+    <summary>Click to see answer</summary>
+
+> <img src="https://render.githubusercontent.com/render/math?math=v_{dW^{[l]}} = \beta_1 v_{dW^{[l]}} + (1-\beta_1) \frac{\partial J}{\partial W^{[l]}}">
+> 
+> <img src="https://render.githubusercontent.com/render/math?math=v_{dW^{[l]}} ^{correted} = \frac{v_{dW^{[l]}}}{1 - (\beta_1)^t}">
+>
+> <img src="https://render.githubusercontent.com/render/math?math=s_{dW^{[l]}} = \beta_2 v_{dW^{[l]}} + (1-\beta_2) (\frac{\partial J}{\partial W^{[l]}}) ^2">
+>
+> <img src="https://render.githubusercontent.com/render/math?math=s_{dW^{[l]}} ^{correted} = \frac{s_{dW^{[l]}}}{1 - (\beta_2)^t}">
+> 
+> <img src="https://render.githubusercontent.com/render/math?math=W^{[l]} = W^{[l]} - \alpha \frac{v^{corrected}_{dW^{[l]}}}  {\sqrt{s_{dW^{[l]}} ^{correted}} + \varepsilon}">
 
 </details>
 
@@ -284,10 +305,10 @@ It depends on the context, we should test with different sizes
 
 > Normalization can make training faster and hyperparameters more robust. 
 >
-> Values of each hidden layer are changing all the time because of changes in <img src="https://render.githubusercontent.com/render/math?math=\color{white}W"> and <img src="https://render.githubusercontent.com/render/math?math=\color{white}b">, suffering from the problem of covariance shift. Batch normalization guarantees the mean and variance of features of each layer (e.g., <img src="https://render.githubusercontent.com/render/math?math=\color{white}Z^{[2]}_1">, <img src="https://render.githubusercontent.com/render/math?math=\color{white}Z^{[2]}_2">) keep the same no matter how actual values of each node changes. 
+> Values of each hidden layer are changing all the time because of changes in <img src="https://render.githubusercontent.com/render/math?math=W"> and <img src="https://render.githubusercontent.com/render/math?math=b">, suffering from the problem of covariance shift. Batch normalization guarantees the mean and variance of features of each layer (e.g., <img src="https://render.githubusercontent.com/render/math?math=Z^{[2]}_1">, <img src="https://render.githubusercontent.com/render/math?math=Z^{[2]}_2">) keep the same no matter how actual values of each node changes. 
 > It allows each layer to learn by itself (more independently than no batch normalization), and speed up learning. 
 >
-> Mean and variance are governed by two learnable parameters <img src="https://render.githubusercontent.com/render/math?math=\color{white}\gamma"> and <img src="https://render.githubusercontent.com/render/math?math=\color{white}\beta">. Adding <img src="https://render.githubusercontent.com/render/math?math=\color{white}\gamma"> and <img src="https://render.githubusercontent.com/render/math?math=\color{white}\beta"> is because we don't want all the layers have the same mean and variance (mean = 0, variance = 1).
+> Mean and variance are governed by two learnable parameters <img src="https://render.githubusercontent.com/render/math?math=\gamma"> and <img src="https://render.githubusercontent.com/render/math?math=\beta">. Adding <img src="https://render.githubusercontent.com/render/math?math=\gamma"> and <img src="https://render.githubusercontent.com/render/math?math=\beta"> is because we don't want all the layers have the same mean and variance (mean = 0, variance = 1).
 
 
 **Batch normalization fomula?**
@@ -295,7 +316,7 @@ It depends on the context, we should test with different sizes
 <details>
     <summary>Click to see answer</summary>
 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}z_{norm}^{(i)} = \frac{z^{(i) - \mu}}{\sqrt{\sigma^2 + \epsilon}}">
+> <img src="https://render.githubusercontent.com/render/math?math=z_{norm}^{(i)} = \frac{z^{(i) - \mu}}{\sqrt{\sigma^2 + \epsilon}}">
 
 </details>
 
@@ -313,13 +334,13 @@ It depends on the context, we should test with different sizes
 
 | Hyperparameter | common value | 
 | --- | --- |
-| learning rate <img src="https://render.githubusercontent.com/render/math?math=\color{white}\alpha"> | <img src="https://render.githubusercontent.com/render/math?math=\color{white}r\in [-4,0], \alpha=10^r"> | 
-| momentum <img src="https://render.githubusercontent.com/render/math?math=\color{white}\beta"> | around 0.9 | 
-| mini-batch size | <img src="https://render.githubusercontent.com/render/math?math=\color{white}2^n"> | 
+| learning rate <img src="https://render.githubusercontent.com/render/math?math=\alpha"> | <img src="https://render.githubusercontent.com/render/math?math=r\in [-4,0], \alpha=10^r"> | 
+| momentum <img src="https://render.githubusercontent.com/render/math?math=\beta"> | around 0.9 | 
+| mini-batch size | <img src="https://render.githubusercontent.com/render/math?math=2^n"> | 
 | # of hidden units | - |
-| learning rate decay | <img src="https://render.githubusercontent.com/render/math?math=\color{white}10^r"> |
-| # of layers <img src="https://render.githubusercontent.com/render/math?math=\color{white}L"> | - | 
-| batch normalization <img src="https://render.githubusercontent.com/render/math?math=\color{white}\beta_1">, <img src="https://render.githubusercontent.com/render/math?math=\color{white}\beta_2">, <img src="https://render.githubusercontent.com/render/math?math=\color{white}\epsilon"> | 0.9, 0.99, <img src="https://render.githubusercontent.com/render/math?math=\color{white}10^{-8}"> | 
+| learning rate decay | <img src="https://render.githubusercontent.com/render/math?math=10^r"> |
+| # of layers <img src="https://render.githubusercontent.com/render/math?math=L"> | - | 
+| batch normalization <img src="https://render.githubusercontent.com/render/math?math=\beta_1">, <img src="https://render.githubusercontent.com/render/math?math=\beta_2">, <img src="https://render.githubusercontent.com/render/math?math=\epsilon"> | 0.9, 0.99, <img src="https://render.githubusercontent.com/render/math?math=10^{-8}"> | 
 
 
 [⬆️ Back to top](#table-of-contents)

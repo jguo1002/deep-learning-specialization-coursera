@@ -257,6 +257,8 @@ It depends on the context, we should test with different sizes
 
 </details>
 
+<br />
+
 **What is momentum?**
 
 > Momentum is a method to dampen down the changes in gradients and accelerate gradients vectors in the right direction using exponentially weighted averages. 
@@ -272,6 +274,25 @@ It depends on the context, we should test with different sizes
     <summary>Click to see answer</summary>
 
 > $\alpha=e^t\alpha_0$ explodes $\alpha$ instead of decaying it
+
+</details>
+
+<br />
+
+**What is the process of parameter update in Adam?**
+
+<details>
+    <summary>Click to see answer</summary>
+
+> $v_{dW^{[l]}} = \beta_1 v_{dW^{[l]}} + (1-\beta_1) \frac{\partial J}{\partial W^{[l]}}$
+> 
+> $v_{dW^{[l]}} ^{correted} = \frac{v_{dW^{[l]}}}{1 - (\beta_1)^t}$
+>
+> $s_{dW^{[l]}} = \beta_2 v_{dW^{[l]}} + (1-\beta_2) (\frac{\partial J}{\partial W^{[l]}}) ^2$
+>
+> $s_{dW^{[l]}} ^{correted} = \frac{s_{dW^{[l]}}}{1 - (\beta_2)^t}$
+> 
+> $W^{[l]} = W^{[l]} - \alpha \frac{v^{corrected}_{dW^{[l]}}}  {\sqrt{s_{dW^{[l]}} ^{correted}} + \varepsilon}$
 
 </details>
 
