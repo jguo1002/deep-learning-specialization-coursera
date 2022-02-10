@@ -9,8 +9,8 @@ import re
 
 def generate_image(math_equation, color):
     math_equation = math_equation[1:-1]
-    print("math_equation: ", math_equation)
-    color = "\color{color}" if color != '' else ''
+    # print("math_equation: ", math_equation)
+    color = "\color{" + color + "}" if color != '' else ''
     render_url = f'https://render.githubusercontent.com/render/math?math={color}'
     return f'<img src="{render_url}{math_equation}">'
 
@@ -42,8 +42,9 @@ if __name__ == "__main__":
             new_md = re.sub(
                 '\$[^\$]*\$', lambda x: generate_image(x.group(0), color), text)
 
-        with open(f"{args.output_fname}{fileNameSuffix}.md", "w") as output_f:
-            for c in new_md:
-                output_f.write(c)
+            with open(f"{args.output_fname}{fileNameSuffix}.md", "w") as output_f:
+                for c in new_md:
+                    output_f.write(c)
+                print(f"{args.output_fname}{fileNameSuffix} has been written")
 
 # python renderReadMe.py --input_fname NOTES --output_fname README

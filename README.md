@@ -14,6 +14,8 @@ Notes are taken in the format of QA.
     - [Week 1: Practical Aspects of Deep Learning](#week-1-practical-aspects-of-deep-learning)
     - [Week 2: Optimization Algorithms](#week-2-optimization-algorithms)
     - [Week 3: Hyperparameter Tuning, Batch Normalization and Programming Frameworks](#week-3-hyperparameter-tuning-batch-normalization-and-programming-frameworks)
+- [Course 3: Structuring Machine Learning Projects](#course-3-structuring-machine-learning-projects)
+
 
 
 
@@ -257,6 +259,8 @@ It depends on the context, we should test with different sizes
 
 </details>
 
+<br />
+
 **What is momentum?**
 
 > Momentum is a method to dampen down the changes in gradients and accelerate gradients vectors in the right direction using exponentially weighted averages. 
@@ -272,6 +276,25 @@ It depends on the context, we should test with different sizes
     <summary>Click to see answer</summary>
 
 > <img src="https://render.githubusercontent.com/render/math?math=\color{white}\alpha=e^t\alpha_0"> explodes <img src="https://render.githubusercontent.com/render/math?math=\color{white}\alpha"> instead of decaying it
+
+</details>
+
+<br />
+
+**What is the process of parameter update in Adam?**
+
+<details>
+    <summary>Click to see answer</summary>
+
+> <img src="https://render.githubusercontent.com/render/math?math=\color{white}v_{dW^{[l]}} = \beta_1 v_{dW^{[l]}} + (1-\beta_1) \frac{\partial J}{\partial W^{[l]}}">
+> 
+> <img src="https://render.githubusercontent.com/render/math?math=\color{white}v_{dW^{[l]}} ^{correted} = \frac{v_{dW^{[l]}}}{1 - (\beta_1)^t}">
+>
+> <img src="https://render.githubusercontent.com/render/math?math=\color{white}s_{dW^{[l]}} = \beta_2 v_{dW^{[l]}} + (1-\beta_2) (\frac{\partial J}{\partial W^{[l]}}) ^2">
+>
+> <img src="https://render.githubusercontent.com/render/math?math=\color{white}s_{dW^{[l]}} ^{correted} = \frac{s_{dW^{[l]}}}{1 - (\beta_2)^t}">
+> 
+> <img src="https://render.githubusercontent.com/render/math?math=\color{white}W^{[l]} = W^{[l]} - \alpha \frac{v^{corrected}_{dW^{[l]}}}  {\sqrt{s_{dW^{[l]}} ^{correted}} + \varepsilon}">
 
 </details>
 
@@ -323,3 +346,36 @@ It depends on the context, we should test with different sizes
 
 
 [⬆️ Back to top](#table-of-contents)
+
+
+## Course 3: Structuring Machine Learning Projects
+
+### Week 1
+
+**What are the types of metrics?**
+
+> Optimizing metric: the metric you want as good as possible, e.g., accuracy
+> 
+> Satisficing metric: as long as it reaches a threshold, e.g., run time, memory
+
+**How should we make decisions on train/dev set error ?**
+
+> We should always have Bayes error to estimate avoidable bias. Human-level error is often seen as a proxy of Bayes eror.
+> 
+> A learning algorithm’s performance can be better human-level performance but it can never be better than Bayes error. human-level performance
+
+**We should not add data from a different distribution to the `train` set. True / False?**
+
+> False.
+> 
+> Sometimes we'll need to train the model on the data that is available, and its distribution may not be the same as the data that will occur in production. Also, adding training data that differs from the dev set may still help the model improve performance on the dev set. What matters is that the dev and test set have the same distribution.
+
+**We should not add data from a different distribution to the `test` set. True / False?**
+
+> True. 
+> 
+> This would cause the dev and test set distributions to become different.
+
+**What should you do if another metric (e.g., false negative rate) should be taken into account?**
+
+> Rethink the appropriate metric for this task, and ask your team to tune to the new metric.
