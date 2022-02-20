@@ -15,6 +15,8 @@ Notes are taken in the format of QA.
     - [Week 2: Optimization Algorithms](#week-2-optimization-algorithms)
     - [Week 3: Hyperparameter Tuning, Batch Normalization and Programming Frameworks](#week-3-hyperparameter-tuning-batch-normalization-and-programming-frameworks)
 - [Course 3: Structuring Machine Learning Projects](#course-3-structuring-machine-learning-projects)
+- [Course 4: Convolutional Neural Networks](#course-4-convolutional-neural-networks)
+
 
 
 
@@ -92,13 +94,18 @@ num of col: number of observations
 > If we use linear activation functions, no matter how many layers you have, the NN is just computing a linear function. 
 
 
-**Why do we usually initialize W as small random values?** 
+**Why do we usually initialize <img src="https://render.githubusercontent.com/render/math?math=\color{white}W"> as small random values?** 
 
 > large W -> large Z (Z = WX + b) -> end up at the flat parts of Sigmoid function 
 -> gradient will be small -> gradient descent will be slow -> learning will be slow
 >
 >If you're not using Sigmoid or Tanh activation functions, it is less of an issue. But note if you're doing a binary classification, the output layer will be a Sigmoid function. 
 
+**What distribution should we draw <img src="https://render.githubusercontent.com/render/math?math=\color{white}W"> from?**
+
+> Normal distirbution. 
+>
+> In Python we should use `np.random.randn` (normal distribution) instead of `np.random.rand` (uniform distribution). 
 
 **Logistic regression’s weights w should be initialized randomly rather than to all zeros, because if you initialize to all zeros, then logistic regression will fail to learn a useful decision boundary because it will fail to “break symmetry”, True/False?**
 
@@ -379,3 +386,30 @@ It depends on the context, we should test with different sizes
 **What should you do if another metric (e.g., false negative rate) should be taken into account?**
 
 > Rethink the appropriate metric for this task, and ask your team to tune to the new metric.
+
+### Week 2
+
+
+[⬆️ Back to top](#table-of-contents)
+
+## Course 4: Convolutional Neural Networks
+
+### Week 1: Foundations of Convolutional Neural Networks
+
+
+**What are the problems of convolution?**
+
+> 1. Each time you apply a convolution operator, the image shrinks. 
+> 2. Pixels on the corner or edge will be used much less than those in the middle. 
+
+**Notations and dimensions of input matrix and parameters**
+
+| Param      | Description | 
+| ----------- | ----------- | 
+|  |   | 
+
+
+[⬆️ Back to top](#table-of-contents)
+
+
+### Week 2: Deep Convolutional Models: Case Studies
