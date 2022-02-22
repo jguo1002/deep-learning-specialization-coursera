@@ -413,3 +413,35 @@ It depends on the context, we should test with different sizes
 
 
 ### Week 2: Deep Convolutional Models: Case Studies
+
+**LeNet - 5**
+
+> LeCun, Y., Bottou, L., Bengio, Y., & Haffner, P. (1998). [Gradient-based learning applied to document recognition](http://web.khu.ac.kr/~tskim/NE%2009-2%20LeNet%201998.pdf). Proceedings of the IEEE, 86(11), 2278-2324.
+
+
+**AlexNet**
+
+> Krizhevsky, A., Sutskever, I., & Hinton, G. E. (2012). [Imagenet classification with deep convolutional neural networks](https://proceedings.neurips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html). Advances in neural information processing systems, 25.
+
+
+**VGG - 16**
+
+> Simonyan, K., & Zisserman, A. (2014). [Very deep convolutional networks for large-scale image recognition](https://arxiv.org/pdf/1409.1556.pdf). arXiv preprint arXiv:1409.1556.
+
+**ResNet**
+
+> He, K., Zhang, X., Ren, S., & Sun, J. (2016). [Deep residual learning for image recognition](https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf). In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 770-778).
+
+**Inceptionm Network**
+
+> Szegedy, C., Liu, W., Jia, Y., Sermanet, P., Reed, S., Anguelov, D., ... & Rabinovich, A. (2015). [Going deeper with convolutions](https://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Szegedy_Going_Deeper_With_2015_CVPR_paper.html). In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 1-9).
+
+
+**MobileNet**
+
+> Howard, A. G., Zhu, M., Chen, B., Kalenichenko, D., Wang, W., Weyand, T., ... & Adam, H. (2017). [Mobilenets: Efficient convolutional neural networks for mobile vision applications](https://arxiv.org/pdf/1704.04861.pdf). arXiv preprint arXiv:1704.04861.
+
+
+**EfficientNet**
+
+> Tan, M., & Le, Q. (2019, May). [Efficientnet: Rethinking model scaling for convolutional neural networks](http://proceedings.mlr.press/v97/tan19a/tan19a.pdf). In International conference on machine learning (pp. 6105-6114). PMLR.
