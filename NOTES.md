@@ -389,8 +389,32 @@ It depends on the context, we should test with different sizes
 
 ### Week 2
 
+**A softmax activation would be a good choice for the output layer if this is a multi-task learning problem. True/False?**
+
+> False.
+> Softmax would be a good choice if one and only one of the possibilities (stop sign, speed bump, pedestrian crossing, green light and red light) was present in each image.
+
+**Should you correct mislabeled data in train and test set after you did so in dev set?**
+
+> You should correct mislabeled data in test set because test and dev set should come from the same distribution. 
+> 
+> You do not necessarily need to fix the mislabeled data in the train set because it's okay for the train set distribution to differ from the dev and test sets. 
+
+
+**Let's say you have 100,000 images taken by cars' front camera (you care about) and 900,000 images from the internet. How should you split train/test set?**
+
+> One example: 
+> 
+> Train set: 900,000 images from the internet + 80,000 images from car’s front-facing camera. 
+> 
+> Dev / Test set: The 20,000 remaining front-camera images in each set.
+> 
+> As seen in lecture, it is important that your dev and test set have the closest possible distribution to “real”-data. It is also important for the training set to contain enough “real”-data to avoid having a data-mismatch problem.
+
 
 [⬆️ Back to top](#table-of-contents)
+
+<br>
 
 ## Course 4: Convolutional Neural Networks
 
