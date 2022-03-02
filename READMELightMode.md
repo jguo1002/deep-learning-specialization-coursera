@@ -430,7 +430,35 @@ It depends on the context, we should test with different sizes
 
 | Param      | Description | 
 | ----------- | ----------- | 
-|  |   | 
+| <img src="https://render.githubusercontent.com/render/math?math=f^{[l]}"> |  filter size |
+| <img src="https://render.githubusercontent.com/render/math?math=p^{[l]}"> | padding |
+| <img src="https://render.githubusercontent.com/render/math?math=s^{[l]}"> | stride | 
+| <img src="https://render.githubusercontent.com/render/math?math=n_c^{[l]}"> | number of filters | 
+
+| Metric      | Dimension | 
+| ----------- | ----------- | 
+| Filter |  <img src="https://render.githubusercontent.com/render/math?math=(f^{[l]}, f^{[l]}, n_c^{[l]})"> |
+| Activations | <img src="https://render.githubusercontent.com/render/math?math=(n_H^{[l]}, n_W^{[l]}, n_c^{[l]})"> |
+| Weights | <img src="https://render.githubusercontent.com/render/math?math=(f^{[l]}, f^{[l]}, n_c^{[l-1]}, n_c^{[l]})"> | 
+| bias | <img src="https://render.githubusercontent.com/render/math?math=(1, 1, 1, n_c^{[l]})"> | 
+
+
+**Input is a 300 by 300 color (RGB) image, and you use a convolutional layer with 100 filters that are each 5x5. How many parameters does this hidden layer have (including the bias parameters)?**
+
+> (5 * 5 * 3 + 1) * 100 = 7,600
+> 
+> Each filter is a volume where the number of channels matches up the number of channels of the input volume.
+
+**What are the benefits of CNN?**
+> 1. It allows a feature detector to be used in multiple locations throughout the whole input volume.
+> 
+> 2. Convolutional layers provide sparsity of connections.
+
+**What does “sparsity of connections” mean?**
+> Each activation in the next layer depends on only a small number of activations from the previous layer.
+> 
+> Yes, each activation of the output volume is computed by multiplying the parameters from only one filter with a volumic slice of the input volume and then summing all these together. 
+
 
 
 [⬆️ Back to top](#table-of-contents)
