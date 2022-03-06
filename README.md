@@ -497,3 +497,27 @@ It depends on the context, we should test with different sizes
 **EfficientNet**
 
 > Tan, M., & Le, Q. (2019, May). [Efficientnet: Rethinking model scaling for convolutional neural networks](http://proceedings.mlr.press/v97/tan19a/tan19a.pdf). In International conference on machine learning (pp. 6105-6114). PMLR.
+
+### Week 3: Detection Algorithms
+
+**YOLO**
+
+> Redmon, J., Divvala, S., Girshick, R., & Farhadi, A. (2016). [You only look once: Unified, real-time object detection](https://arxiv.org/pdf/1506.02640.pdf). In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 779-788).
+
+**What are advantages of YOLO algorithm?**
+
+> - It can ouput more accurate bounding box
+> - It's one single convolutional computation where you use one conv net with lots of shared computation between all the computation needed for all the cells. Therefore it's a very efficient algorithm. 
+
+**How to evaluate object localization?**
+
+> <img src="https://render.githubusercontent.com/render/math?math=\color{white}IoU = \frac{size\ of\ intersection}{size\ of\ union} ">
+
+**How does non-max suppression work?**
+
+> While BoundingBoxes: 
+>  
+> - Pick the box with the highest <img src="https://render.githubusercontent.com/render/math?math=\color{white}P_c">, add it to ouput list 
+> - Calculate IoU of all the other boxes with the one in the last step. Discard boxes with IoU GREATER than sthreshold
+
+
