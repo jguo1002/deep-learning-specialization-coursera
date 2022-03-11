@@ -521,3 +521,5 @@ It depends on the context, we should test with different sizes
 > - Calculate IoU of all the other boxes with the one in the last step. Discard boxes with IoU GREATER than sthreshold
 
 
+**U-net**
+> Ronneberger, O., Fischer, P., & Brox, T. (2015, October). [U-net: Convolutional networks for biomedical image segmentation](https://arxiv.org/pdf/1505.04597.pdf). In International Conference on Medical image computing and computer-assisted intervention (pp. 234-241). Springer, Cham.
