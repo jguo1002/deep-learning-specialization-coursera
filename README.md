@@ -16,6 +16,10 @@ Notes are taken in the format of QA.
     - [Week 3: Hyperparameter Tuning, Batch Normalization and Programming Frameworks](#week-3-hyperparameter-tuning-batch-normalization-and-programming-frameworks)
 - [Course 3: Structuring Machine Learning Projects](#course-3-structuring-machine-learning-projects)
 - [Course 4: Convolutional Neural Networks](#course-4-convolutional-neural-networks)
+    - [Week 1: Foundations of Convolutional Neural Networks](#week-1-foundations-of-convolutional-neural-networks)
+    - [Week 2: Deep Convolutional Models: Case Studies](#week-2-deep-convolutional-models-case-studies)
+    - [Week 3: Detection Algorithms](#week-3-detection-algorithms)
+    - [Week 4: Face Recognition](#week-4-face-recognition)
 
 
 
@@ -498,6 +502,26 @@ It depends on the context, we should test with different sizes
 
 > Tan, M., & Le, Q. (2019, May). [Efficientnet: Rethinking model scaling for convolutional neural networks](http://proceedings.mlr.press/v97/tan19a/tan19a.pdf). In International conference on machine learning (pp. 6105-6114). PMLR.
 
+
+**Suppose that in a MobileNet v2 Bottleneck block we have an <img src="https://render.githubusercontent.com/render/math?math=\color{white}n\times n \times 5"> input volume. We use 30 filters for the expansion. In the depthwise convolutions we use <img src="https://render.githubusercontent.com/render/math?math=\color{white}3 \times 3"> filters, and 20 filters for the projection.**
+
+**How many parameters are used in the complete block, suppose we don't use bias?**
+
+> Expansion filter: 5 * 30 = 150
+> 
+> Depthwise: 3 * 3 * 30 = 270 
+> 
+> Pointwise: 30 * 20 = 600
+> 
+> Total = 150 + 270 + 600 = 1020
+
+**What does skip-connection do?**
+
+> Skip-connections make it easy for the network to learn an identity mapping between the input and the output within the ResNet block. 
+
+
+[⬆️ Back to top](#table-of-contents)
+
 ### Week 3: Detection Algorithms
 
 **YOLO**
@@ -523,3 +547,12 @@ It depends on the context, we should test with different sizes
 
 **U-net**
 > Ronneberger, O., Fischer, P., & Brox, T. (2015, October). [U-net: Convolutional networks for biomedical image segmentation](https://arxiv.org/pdf/1505.04597.pdf). In International Conference on Medical image computing and computer-assisted intervention (pp. 234-241). Springer, Cham.
+
+### Week 4: Face Recognition
+
+**Siamese Network**
+
+> Taigman, Y., Yang, M., Ranzato, M. A., & Wolf, L. (2014). [Deepface: Closing the gap to human-level performance in face verification](https://openaccess.thecvf.com/content_cvpr_2014/papers/Taigman_DeepFace_Closing_the_2014_CVPR_paper.pdf). In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 1701-1708).
+
+**Triplet Loss**
+> Schroff, F., Kalenichenko, D., & Philbin, J. (2015). [Facenet: A unified embedding for face recognition and clustering](https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Schroff_FaceNet_A_Unified_2015_CVPR_paper.pdf). In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 815-823).
