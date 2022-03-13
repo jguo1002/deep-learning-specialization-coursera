@@ -446,6 +446,15 @@ It depends on the context, we should test with different sizes
 | Weights | <img src="https://render.githubusercontent.com/render/math?math=(f^{[l]}, f^{[l]}, n_c^{[l-1]}, n_c^{[l]})"> | 
 | bias | <img src="https://render.githubusercontent.com/render/math?math=(1, 1, 1, n_c^{[l]})"> | 
 
+**What is valid and same convolutions?**
+
+> Valid: no padding
+> 
+> Same: Pad so that output size is the same as the input size
+
+**How to calculate the dimension of next conv layer?**
+
+> <img src="https://render.githubusercontent.com/render/math?math=\lfloor \frac{n+2p-f}{s} +1 \rfloor \times \lfloor \frac{n+2p-f}{s} +1 \rfloor">
 
 **Input is a 300 by 300 color (RGB) image, and you use a convolutional layer with 100 filters that are each 5x5. How many parameters does this hidden layer have (including the bias parameters)?**
 
@@ -474,11 +483,13 @@ It depends on the context, we should test with different sizes
 
 > LeCun, Y., Bottou, L., Bengio, Y., & Haffner, P. (1998). [Gradient-based learning applied to document recognition](http://web.khu.ac.kr/~tskim/NE%2009-2%20LeNet%201998.pdf). Proceedings of the IEEE, 86(11), 2278-2324.
 
+*hard to read*
 
 **AlexNet**
 
 > Krizhevsky, A., Sutskever, I., & Hinton, G. E. (2012). [Imagenet classification with deep convolutional neural networks](https://proceedings.neurips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html). Advances in neural information processing systems, 25.
 
+*easy to read*
 
 **VGG - 16**
 
@@ -487,6 +498,10 @@ It depends on the context, we should test with different sizes
 **ResNet**
 
 > He, K., Zhang, X., Ren, S., & Sun, J. (2016). [Deep residual learning for image recognition](https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf). In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 770-778).
+
+**What does skip-connection do?**
+
+> Skip-connections make it easy for the network to learn an identity mapping between the input and the output within the ResNet block. 
 
 **Inceptionm Network**
 
@@ -497,10 +512,6 @@ It depends on the context, we should test with different sizes
 
 > Howard, A. G., Zhu, M., Chen, B., Kalenichenko, D., Wang, W., Weyand, T., ... & Adam, H. (2017). [Mobilenets: Efficient convolutional neural networks for mobile vision applications](https://arxiv.org/pdf/1704.04861.pdf). arXiv preprint arXiv:1704.04861.
 
-
-**EfficientNet**
-
-> Tan, M., & Le, Q. (2019, May). [Efficientnet: Rethinking model scaling for convolutional neural networks](http://proceedings.mlr.press/v97/tan19a/tan19a.pdf). In International conference on machine learning (pp. 6105-6114). PMLR.
 
 
 **Suppose that in a MobileNet v2 Bottleneck block we have an <img src="https://render.githubusercontent.com/render/math?math=n\times n \times 5"> input volume. We use 30 filters for the expansion. In the depthwise convolutions we use <img src="https://render.githubusercontent.com/render/math?math=3 \times 3"> filters, and 20 filters for the projection.**
@@ -515,10 +526,12 @@ It depends on the context, we should test with different sizes
 > 
 > Total = 150 + 270 + 600 = 1020
 
-**What does skip-connection do?**
 
-> Skip-connections make it easy for the network to learn an identity mapping between the input and the output within the ResNet block. 
 
+
+**EfficientNet**
+
+> Tan, M., & Le, Q. (2019, May). [Efficientnet: Rethinking model scaling for convolutional neural networks](http://proceedings.mlr.press/v97/tan19a/tan19a.pdf). In International conference on machine learning (pp. 6105-6114). PMLR.
 
 [⬆️ Back to top](#table-of-contents)
 
