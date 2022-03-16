@@ -569,3 +569,7 @@ It depends on the context, we should test with different sizes
 
 **Triplet Loss**
 > Schroff, F., Kalenichenko, D., & Philbin, J. (2015). [Facenet: A unified embedding for face recognition and clustering](https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Schroff_FaceNet_A_Unified_2015_CVPR_paper.pdf). In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 815-823).
+
+**Neural Style Transfer**
+
+> Gatys, L. A., Ecker, A. S., & Bethge, M. (2015). [A neural algorithm of artistic style](https://arxiv.org/abs/1508.06576). arXiv preprint arXiv:1508.06576.
