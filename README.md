@@ -557,9 +557,26 @@ It depends on the context, we should test with different sizes
 > - Pick the box with the highest <img src="https://render.githubusercontent.com/render/math?math=\color{white}P_c">, add it to ouput list 
 > - Calculate IoU of all the other boxes with the one in the last step. Discard boxes with IoU GREATER than sthreshold
 
+**What is the dimension of one grid in YOLO? Suppose there are <img src="https://render.githubusercontent.com/render/math?math=\color{white}C"> classes and <img src="https://render.githubusercontent.com/render/math?math=\color{white}A"> anchors**
+
+> <img src="https://render.githubusercontent.com/render/math?math=\color{white}A \times (C + 5)"> 
+> 
+> <img src="https://render.githubusercontent.com/render/math?math=\color{white}5: [p_c, b_x, b_y, b_h, b_w]">
+
+**How does Transpose Convolution work?**
+
+```
+
+```
 
 **U-net**
 > Ronneberger, O., Fischer, P., & Brox, T. (2015, October). [U-net: Convolutional networks for biomedical image segmentation](https://arxiv.org/pdf/1505.04597.pdf). In International Conference on Medical image computing and computer-assisted intervention (pp. 234-241). Springer, Cham.
+
+**What is the dimension of U-Net archiecture output?**
+
+> <img src="https://render.githubusercontent.com/render/math?math=\color{white}h \times w \times k"> where <img src="https://render.githubusercontent.com/render/math?math=\color{white}k"> is the number of classes
+
+[⬆️ Back to top](#table-of-contents)
 
 ### Week 4: Face Recognition
 
