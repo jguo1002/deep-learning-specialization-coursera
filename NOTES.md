@@ -554,8 +554,9 @@ It depends on the context, we should test with different sizes
 
 > While BoundingBoxes: 
 >  
-> - Pick the box with the highest $P_c$, add it to ouput list 
-> - Calculate IoU of all the other boxes with the one in the last step. Discard boxes with IoU GREATER than sthreshold
+> - Pick the box with the highest score ($p_c * c_i$), add it to ouput list 
+> - Calculate the overlap IoU of this box and all the other boxes. Discard boxes that overlap significantly (`iou >= iou_threshold`). 
+> - Repeat the steps above until there are no more boxes with a lower score than the currently selected box.
 
 **What is the dimension of one grid in YOLO? Suppose there are $C$ classes and $A$ anchors**
 
