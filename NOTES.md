@@ -584,6 +584,14 @@ It depends on the context, we should test with different sizes
 
 ### Week 4: Face Recognition
 
+
+**What is the differences between face verification and face recognition?**
+
+| Input | Output | Comparison |
+| -- | -- | -- |
+| An image and a name/ID | whether the input image if the claimed person | 1:1 |
+| An image | if the image is any of the K persons | 1:K |
+
 **Siamese Network**
 
 > Taigman, Y., Yang, M., Ranzato, M. A., & Wolf, L. (2014). [Deepface: Closing the gap to human-level performance in face verification](https://openaccess.thecvf.com/content_cvpr_2014/papers/Taigman_DeepFace_Closing_the_2014_CVPR_paper.pdf). In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 1701-1708).
@@ -601,14 +609,25 @@ It depends on the context, we should test with different sizes
 
 > $J(G) = \alpha J_{content}(C, G) + \beta J_{style}(S, G)$
 >
-> $G$: generated image. $C$: content image. $S$: style image. 
->
-> $J_{content}(C,G) = \frac{1}{2} 
-\Vert a^{[l](C)} - a^{[l](G)} \Vert^2 $
+> $G$: generated image.
+>  
+> $C$: content image. 
 > 
-> $J_{style}(S, G)^{[l]} = \frac{1}
-{(2 n^{[l]}_H n^{[l]}_W n^{[l]}_C)^2} \sum_k \sum_{k'} 
-(G^{[l](S)}_{kk'} - G^{[l](G)}_{kk'})^2
-$
-
+> $S$: style image. 
+> 
+> $G_{gram}$: gram matrix
+> 
+> Content cost. For each layer: 
+> $J_{content}(C,G)^{[l]} = \frac{1}{2} \Vert a^{[l](C)} - a^{[l](G)} \Vert^2 $
+> 
+> Content cost. For all the entries
+> $J_{content}(C,G) = \frac{1}{4 \times n_H \times n_W \times n_C} \sum_{all entries}( a^{(C)} - a^{(G)} )^2 $
+> 
+> Style cost. For each layer: 
+>
+> $J^{[l]}_{style}(S, G) = \frac{1}{(2 n^{[l]}_H n^{[l]}_W n^{[l]}_C)^2}    \sum\limits_{i=1}^{n_C}     \sum\limits_{j=1}^{n_C}     (G^{[l](S)}_{(gram) i, j} - G^{[l](G)}_{(gram) i,j})^2 $
+> 
+> Style cost. For all entries: 
+> 
+> $J_{style} (S,G) = \sum\limits_l \lambda^{[l]} J ^{[l]}_{style} (S,G) $
 
