@@ -540,6 +540,9 @@ It depends on the context, we should test with different sizes
 **YOLO**
 
 > Redmon, J., Divvala, S., Girshick, R., & Farhadi, A. (2016). [You only look once: Unified, real-time object detection](https://arxiv.org/pdf/1506.02640.pdf). In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 779-788).
+>
+> Github: [YAD2K: Yet Another Darknet 2 Keras](https://github.com/allanzelener/YAD2K)
+
 
 **What are advantages of YOLO algorithm?**
 
@@ -590,4 +593,22 @@ It depends on the context, we should test with different sizes
 
 **Neural Style Transfer**
 
+> Zeiler, M. D., & Fergus, R. (2014, September). [Visualizing and understanding convolutional networks](https://link.springer.com/content/pdf/10.1007/978-3-319-10590-1_53.pdf). In European conference on computer vision (pp. 818-833). Springer, Cham.
+
 > Gatys, L. A., Ecker, A. S., & Bethge, M. (2015). [A neural algorithm of artistic style](https://arxiv.org/abs/1508.06576). arXiv preprint arXiv:1508.06576.
+
+**What is the cost function of style transfer?**
+
+> $J(G) = \alpha J_{content}(C, G) + \beta J_{style}(S, G)$
+>
+> $G$: generated image. $C$: content image. $S$: style image. 
+>
+> $J_{content}(C,G) = \frac{1}{2} 
+\Vert a^{[l](C)} - a^{[l](G)} \Vert^2 $
+> 
+> $J_{style}(S, G)^{[l]} = \frac{1}
+{(2 n^{[l]}_H n^{[l]}_W n^{[l]}_C)^2} \sum_k \sum_{k'} 
+(G^{[l](S)}_{kk'} - G^{[l](G)}_{kk'})^2
+$
+
+
