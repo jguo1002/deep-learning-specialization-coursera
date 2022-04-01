@@ -567,11 +567,24 @@ It depends on the context, we should test with different sizes
 > 
 > <img src="https://render.githubusercontent.com/render/math?math=5: [p_c, b_x, b_y, b_h, b_w]">
 
-**How does Transpose Convolution work?**
+**How does Transposed Convolution work?**
+
+Transposed Convolutions are used to upsample the input feature map to a desired output feature map using some learnable parameters.
 
 ```
-
+- pick the top left corner element of input, multiply it with every element in the kernel
+- put the result (the same size with kernel) on the top left corner of output matrix
+- pick the second element of input, multiple it with every element in the kernel
+- put the result in the output matrix based on stride
+- repeat the steps above 
+- if there is overlap of results, add the elements 
+- ignore elements in the padding
 ```
+Read more: 
+
+[Make your own neural network | Calculating the Output Size of Convolutions and Transpose Convolutions](http://makeyourownneuralnetwork.blogspot.com/2020/02/calculating-output-size-of-convolutions.html)
+
+[Towards Data Science | Transposed Convolution Demystified](https://towardsdatascience.com/transposed-convolution-demystified-84ca81b4baba)
 
 **U-net**
 > Ronneberger, O., Fischer, P., & Brox, T. (2015, October). [U-net: Convolutional networks for biomedical image segmentation](https://arxiv.org/pdf/1505.04597.pdf). In International Conference on Medical image computing and computer-assisted intervention (pp. 234-241). Springer, Cham.
@@ -618,9 +631,11 @@ It depends on the context, we should test with different sizes
 > <img src="https://render.githubusercontent.com/render/math?math=G_{gram}">: gram matrix
 > 
 > Content cost. For each layer: 
+>
 > <img src="https://render.githubusercontent.com/render/math?math=J_{content}(C,G)^{[l]} = \frac{1}{2} \Vert a^{[l](C)} - a^{[l](G)} \Vert^2 ">
 > 
 > Content cost. For all the entries
+>
 > <img src="https://render.githubusercontent.com/render/math?math=J_{content}(C,G) = \frac{1}{4 \times n_H \times n_W \times n_C} \sum_{all entries}( a^{(C)} - a^{(G)} )^2 ">
 > 
 > Style cost. For each layer: 
@@ -631,3 +646,4 @@ It depends on the context, we should test with different sizes
 > 
 > <img src="https://render.githubusercontent.com/render/math?math=J_{style} (S,G) = \sum\limits_l \lambda^{[l]} J ^{[l]}_{style} (S,G) ">
 
+[⬆️ Back to top](#table-of-contents)
