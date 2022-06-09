@@ -20,7 +20,8 @@ Notes are taken in the format of QA.
     - [Week 2: Deep Convolutional Models: Case Studies](#week-2-deep-convolutional-models-case-studies)
     - [Week 3: Detection Algorithms](#week-3-detection-algorithms)
     - [Week 4: Face Recognition](#week-4-face-recognition)
-
+- [Course 5: Sequence Model](#course-5-sequence-model)
+    - [Week 1: Recurrent Neural Network](#week-1-recurrent-neural-network)
 
 
 
@@ -647,3 +648,17 @@ Read more:
 > <img src="https://render.githubusercontent.com/render/math?math=\color{white}J_{style} (S,G) = \sum\limits_l \lambda^{[l]} J ^{[l]}_{style} (S,G) ">
 
 [⬆️ Back to top](#table-of-contents)
+
+## Course 5: Sequence Model
+
+### Week 1: Recurrent Neural Network
+
+**Why not use standard network on sequence data?**
+
+> - Inputs and outputs can be different in length. 
+> - Standard network doesn't share features across positions of text. E.g., Harry at position 0 is a name, is other Harry at other positions also a name?
+
+
+[⬆️ Back to top](#table-of-contents)
+
+
