@@ -658,6 +658,30 @@ Read more:
 > - Inputs and outputs can be different in length. 
 > - Standard network doesn't share features across positions of text. E.g., Harry at position 0 is a name, is other Harry at other positions also a name?
 
+**Notations**
+
+| Param      | Description | 
+| ----------- | ----------- | 
+| <img src="https://render.githubusercontent.com/render/math?math=x^{(i)<t>}"> |  the t th element in the training sequence i |
+| <img src="https://render.githubusercontent.com/render/math?math=T_x^{(i)}"> | the length of training sequence i |
+| <img src="https://render.githubusercontent.com/render/math?math=y^{(i)<t>}"> | the t th element in the output sequence i | 
+| <img src="https://render.githubusercontent.com/render/math?math=T_y^{(i)}"> | the length of output sequence i |
+
+**What is the formula of forward propagation?**
+
+> <img src="https://render.githubusercontent.com/render/math?math=a^{<t>} = g(W_{aa}a^{<t-1>} + W_{ax}x^{<t>} + b_a)">
+>
+> <img src="https://render.githubusercontent.com/render/math?math=y^{<t>} = g(W_{ya}a^{<t>} + b_y)">
+> 
+> Here <img src="https://render.githubusercontent.com/render/math?math=W_{ax}">, the second index means <img src="https://render.githubusercontent.com/render/math?math=W_{ax}"> will be multiplied by some x-like quantity, to compute some a-like quantity. 
+
+**List some examples of RNN architectures**
+
+> - Many to one: sentiment classiciation 
+> - One to many: music generation. Input: genre / first note; output: a sequence of notes
+> - Many to many (different length): machine translation. 
+
+[Andrej Karpathy: The Unreasonable Effectiveness of Recurrent Neural Networks](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)
 
 [⬆️ Back to top](#table-of-contents)
 
