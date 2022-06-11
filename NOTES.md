@@ -683,6 +683,17 @@ Read more:
 
 [Andrej Karpathy: The Unreasonable Effectiveness of Recurrent Neural Networks](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)
 
+
+**Why RNN has vanishing gradients problems?**
+
+> An ouput is mainly influenced by values close to its position.  
+> It's difficult for an output to be strongly influenced by an input that is very early in the sequence. Because it's difficult to backpropagate all the wway to the beginning of the sequence. 
+
+**How to deal with exploding gradients?**
+> Apply gradients clipping. Re-scale some gradient vectors when it's bigger than some threshold. 
+
+
+
 [⬆️ Back to top](#table-of-contents)
 
 
