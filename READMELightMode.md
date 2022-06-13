@@ -692,6 +692,26 @@ Read more:
 **How to deal with exploding gradients?**
 > Apply gradients clipping. Re-scale some gradient vectors when it's bigger than some threshold. 
 
+**What is the formula of Gated Recurrent Unit (GRU)?**
+
+> <img src="https://render.githubusercontent.com/render/math?math=\tilde{c}^{<t>} = tanh(W_c[\Gamma_r * c^{<t-1>}, x^{<t>}] + b_c)">
+>
+> <img src="https://render.githubusercontent.com/render/math?math=\Gamma_u">: updated gate, (0,1)
+>
+> <img src="https://render.githubusercontent.com/render/math?math=\Gamma_u = \sigma(W_u[c^{<t-1>}, x^{<t>}] + b_u)"> 
+> 
+> <img src="https://render.githubusercontent.com/render/math?math=\Gamma_r">: how relevant <img src="https://render.githubusercontent.com/render/math?math=c^{<t-1>}"> is to <img src="https://render.githubusercontent.com/render/math?math=\tilde{c}^{<t>}">. Same update method with <img src="https://render.githubusercontent.com/render/math?math=\Gamma_u">
+>
+> 
+> <img src="https://render.githubusercontent.com/render/math?math=c^{<t>} = \Gamma_u * \tilde{c}^{<t>} + (1-\Gamma_u) * c^{<t-1>}">
+
+Cho, K., Van Merriënboer, B., Bahdanau, D., & Bengio, Y. (2014). [On the properties of neural machine translation: Encoder-decoder approaches.](https://arxiv.org/pdf/1409.1259.pdf)
+
+Chung, J., Gulcehre, C., Cho, K., & Bengio, Y. (2014). [Empirical evaluation of gated recurrent neural networks on sequence modeling.](https://arxiv.org/pdf/1412.3555.pdf)
+
+**
+
+Hochreiter, S., & Schmidhuber, J. (1997). [Long short-term memory. Neural computation, 9(8), 1735-1780.](https://www.researchgate.net/profile/Sepp-Hochreiter/publication/13853244_Long_Short-term_Memory/links/5700e75608aea6b7746a0624/Long-Short-term-Memory.pdf)
 
 
 [⬆️ Back to top](#table-of-contents)
