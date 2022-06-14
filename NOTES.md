@@ -709,9 +709,23 @@ Cho, K., Van Merriënboer, B., Bahdanau, D., & Bengio, Y. (2014). [On the proper
 
 Chung, J., Gulcehre, C., Cho, K., & Bengio, Y. (2014). [Empirical evaluation of gated recurrent neural networks on sequence modeling.](https://arxiv.org/pdf/1412.3555.pdf)
 
-**
 
 Hochreiter, S., & Schmidhuber, J. (1997). [Long short-term memory. Neural computation, 9(8), 1735-1780.](https://www.researchgate.net/profile/Sepp-Hochreiter/publication/13853244_Long_Short-term_Memory/links/5700e75608aea6b7746a0624/Long-Short-term-Memory.pdf)
+
+**How does LSTM differ from GRU?**
+
+> Instead of having one update gate controls $\tilde{c}^{<t>}$ and $c^{<t-1>}$, LSTM has two separate gates $\Gamma_u$ and $\Gamma_f$ (forget gate). 
+>
+> Update $c^{<t>}$: 
+>
+> $c^{<t>} = \Gamma_u * \tilde{c}^{<t>} + \Gamma_f * c^{<t-1>}$
+
+**What are the disadvantages of Bidirectional RNN?**
+
+> You do need an entire sequence of date before making predictions anywhere (cannot use in real-time application).
+
+
+
 
 
 [⬆️ Back to top](#table-of-contents)
