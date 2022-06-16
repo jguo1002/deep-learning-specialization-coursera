@@ -504,6 +504,15 @@ It depends on the context, we should test with different sizes
 
 > Skip-connections make it easy for the network to learn an identity mapping between the input and the output within the ResNet block. 
 
+**Why does ResNet work?**
+
+> It helps with gradient vanishing and exploding problems and allows people to train deep neural networks without loss in performance. 
+
+> "The skip connections in ResNet solve the problem of vanishing gradient in deep neural networks by allowing this alternate shortcut path for the gradient to flow through. The other way that these connections help is by allowing the model to learn the identity functions which ensures that the higher layer will perform at least as good as the lower layer, and not worse. "
+> 
+> -- [Introduction to Resnet or Residual Network](https://www.mygreatlearning.com/blog/resnet)
+
+
 **Inceptionm Network**
 
 > Szegedy, C., Liu, W., Jia, Y., Sermanet, P., Reed, S., Anguelov, D., ... & Rabinovich, A. (2015). [Going deeper with convolutions](https://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Szegedy_Going_Deeper_With_2015_CVPR_paper.html). In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 1-9).
