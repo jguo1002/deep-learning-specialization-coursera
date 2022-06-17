@@ -22,6 +22,7 @@ Notes are taken in the format of QA.
     - [Week 4: Face Recognition](#week-4-face-recognition)
 - [Course 5: Sequence Model](#course-5-sequence-model)
     - [Week 1: Recurrent Neural Network](#week-1-recurrent-neural-network)
+    - [Week 2: Natural Language Processing & Word Embeddings](#week-2-natural-language-processing--word-embeddings)
 
 
 
@@ -733,10 +734,22 @@ Hochreiter, S., & Schmidhuber, J. (1997). [Long short-term memory. Neural comput
 
 > You do need an entire sequence of date before making predictions anywhere (cannot use in real-time application).
 
-
-
-
-
 [⬆️ Back to top](#table-of-contents)
 
 
+### Week 2: Natural Language Processing & Word Embeddings
+
+**What is the downside of skip-gram model?**
+
+> The Softmax objective is expensive to compute because it needs to sum over the entire vocabulary. 
+
+**What are differences of problem objectives in the skip-gram model and negative sampling?**
+
+> Skip-gram: given a context, predict the probability of different target word 
+> 
+> Negative sampling: given a pair of words, is it a context-target pair? Is it a positive or negative sample? 
+
+**Why negative sampling's computation cost is lower?**
+
+> It converts a N softmax problem to a N binary classification problem. 
+> In each iteration, only train K words. K = 5 to 20 in small vocabulary, K = 2 to 5 in large vobabulary. 
