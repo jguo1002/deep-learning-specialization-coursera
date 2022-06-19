@@ -734,6 +734,11 @@ Hochreiter, S., & Schmidhuber, J. (1997). [Long short-term memory. Neural comput
 
 > You do need an entire sequence of date before making predictions anywhere (cannot use in real-time application).
 
+**True/False: In RNN, step t uses the probabilities output by the RNN to pick the highest probability word for that time-step. Then it passes the ground-truth word from the training set to the next time-step.**
+
+> No, the probabilities output by the RNN are not used to pick the highest probability word and the ground-truth word from the training set is not the input to the next time-step.
+
+
 [⬆️ Back to top](#table-of-contents)
 
 
