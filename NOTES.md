@@ -738,6 +738,13 @@ Hochreiter, S., & Schmidhuber, J. (1997). [Long short-term memory. Neural comput
 
 > No, the probabilities output by the RNN are not used to pick the highest probability word and the ground-truth word from the training set is not the input to the next time-step.
 
+**You find your weights and activations are all taking on the value of NaN (“Not a Number”), what problem may cause it?**
+
+> Gradient exploding. It happens when large error gradients accumulate and result in very large updates to the NN model weights during training. These weights can become too large and cause an overflow, identified as NaN.
+
+**Sarah proposes to simplify the GRU by always removing the $\Gamma_u$. I.e., setting $\Gamma_u$ = 0. Ashely proposes to simplify the GRU by removing the $\Gamma_r$. I. e., setting $\Gamma_r$= 1 always. Which of these models is more likely to work without vanishing gradient problems even when trained on very long input sequences?**
+
+> No. For the signal to backpropagate without vanishing, we need c<t> to be highly dependent on $c^{<t−1>}$.
 
 [⬆️ Back to top](#table-of-contents)
 
