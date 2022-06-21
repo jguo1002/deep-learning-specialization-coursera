@@ -765,3 +765,12 @@ Hochreiter, S., & Schmidhuber, J. (1997). [Long short-term memory. Neural comput
 
 > It converts a N softmax problem to a N binary classification problem. 
 > In each iteration, only train K words. K = 5 to 20 in small vocabulary, K = 2 to 5 in large vobabulary. 
+
+
+**What is the learning objective of GloVe?**
+
+> <img src="https://render.githubusercontent.com/render/math?math=\color{white}minimize \sum{}^{10,000}_{i=1} \sum{}^{10,000}_{j=1} f(X_{ij}) (\theta_j^T e_j + b_i + b'_j - logX_{ij} )^2 ">
+>
+> <img src="https://render.githubusercontent.com/render/math?math=\color{white}X_{ij}"> = # of times <img src="https://render.githubusercontent.com/render/math?math=\color{white}j"> appears in the context of <img src="https://render.githubusercontent.com/render/math?math=\color{white}i">
+> 
+> depending on the definition of "context", <img src="https://render.githubusercontent.com/render/math?math=\color{white}X_{ij}"> and <img src="https://render.githubusercontent.com/render/math?math=\color{white}X_{ji}"> may be symmetric. 
