@@ -774,3 +774,16 @@ Hochreiter, S., & Schmidhuber, J. (1997). [Long short-term memory. Neural comput
 > <img src="https://render.githubusercontent.com/render/math?math=\color{white}X_{ij}"> = # of times <img src="https://render.githubusercontent.com/render/math?math=\color{white}j"> appears in the context of <img src="https://render.githubusercontent.com/render/math?math=\color{white}i">
 > 
 > depending on the definition of "context", <img src="https://render.githubusercontent.com/render/math?math=\color{white}X_{ij}"> and <img src="https://render.githubusercontent.com/render/math?math=\color{white}X_{ji}"> may be symmetric. 
+
+**Debiasing word embeddings**
+
+Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [Man is to computer programmer as woman is to homemaker? debiasing word embeddings](). Advances in neural information processing systems, 29.
+
+
+**What are the steps in the debiasing word embeddings paper?**
+
+> - Step 1: Identify gender subspace by SVD.
+> - Step 2a: Hard de-biasing (neutralize and equalize).
+> - Step 2b: Soft bias correction.
+> 
+> Determine gender specific words: first listed218 words from dictionary, then trained a SVM to classify 3M words in w2vNEWS, resulting in 6,449 gender-specific words. 
