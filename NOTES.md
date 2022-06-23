@@ -651,7 +651,7 @@ Read more:
 > 
 > Style cost. For each layer: 
 >
-> $J^{[l]}_{style}(S, G) = \frac{1}{(2 n^{[l]}_H n^{[l]}_W n^{[l]}_C)^2}    \sum\limits_{i=1}^{n_C}     \sum\limits_{j=1}^{n_C}     (G^{[l](S)}_{(gram) i, j} - G^{[l](G)}_{(gram) i,j})^2 $
+> $J^{[l]}_{style}(S, G) = \frac{1}{(2 n^{[l]}_H n^{[l]}_W n^{[l]}_C)^2}    \sum_{i=1}^{n_C}     \sum_{j=1}^{n_C}     (G^{[l](S)}_{(gram) i, j} - G^{[l](G)}_{(gram) i,j})^2 $
 > 
 > Style cost. For all entries: 
 > 
@@ -787,3 +787,7 @@ Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [
 > - Step 2b: Soft bias correction.
 > 
 > Determine gender specific words: first listed218 words from dictionary, then trained a SVM to classify 3M words in w2vNEWS, resulting in 6,449 gender-specific words. 
+
+**$A$ is an embedding matrix, $o_{4567}$ is a one-hot vector corresponding to word 4567. Can we call $A * o_{4567}$ in Python to get the embedding of word 4567?**
+
+> The element-wise multiplication is extremely inefficient. 
