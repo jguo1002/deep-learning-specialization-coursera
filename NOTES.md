@@ -702,6 +702,12 @@ Read more:
 **How to deal with exploding gradients?**
 > Apply gradients clipping. Re-scale some gradient vectors when it's bigger than some threshold. 
 
+**Where and how do you apply clipping?**
+
+> forward pass -> cost computation -> backward pass -> CLIPPING -> parameter update
+> 
+> `np.clip(gradient, -maxValue, maxValue, out = gradient)`
+
 **What is the formula of Gated Recurrent Unit (GRU)?**
 
 > $\tilde{c}^{<t>} = tanh(W_c[\Gamma_r * c^{<t-1>}, x^{<t>}] + b_c)$
