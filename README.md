@@ -651,7 +651,7 @@ Read more:
 > 
 > Style cost. For each layer: 
 >
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}J^{[l]}_{style}(S, G) = \frac{1}{(2 n^{[l]}_H n^{[l]}_W n^{[l]}_C)^2}    \sum_{i=1}^{n_C}     \sum_{j=1}^{n_C}     (G^{[l](S)}_{(gram) i, j} - G^{[l](G)}_{(gram) i,j})^2 ">
+> <img src="https://render.githubusercontent.com/render/math?math=\color{white}J^{[l]}_{style}(S, G) = \frac{1}{(2 n^{[l]}_H n^{[l]}_W n^{[l]}_C)^2}    \sum\limits_{i=1}^{n_C}     \sum\limits_{j=1}^{n_C}     (G^{[l](S)}_{(gram) i, j} - G^{[l](G)}_{(gram) i,j})^2 ">
 > 
 > Style cost. For all entries: 
 > 
@@ -707,6 +707,22 @@ Read more:
 > forward pass -> cost computation -> backward pass -> CLIPPING -> parameter update
 > 
 > `np.clip(gradient, -maxValue, maxValue, out = gradient)`
+> 
+```
+def optimize(X, Y, a_prev, parameters, learning_rate): 
+
+    loss, cache = rnn_forward(X, Y, a_prev, parameters)
+    
+    gradients, a = rnn_backward(X, Y, parameters, cache)
+    
+    gradients = clip(gradients, 5)
+    
+    parameters = update_parameters(parameters, gradients, learning_rate)
+        
+    return loss, gradients, a[len(X)-1]
+
+```
+
 
 **What is the formula of Gated Recurrent Unit (GRU)?**
 
@@ -797,3 +813,11 @@ Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [
 **<img src="https://render.githubusercontent.com/render/math?math=\color{white}A"> is an embedding matrix, <img src="https://render.githubusercontent.com/render/math?math=\color{white}o_{4567}"> is a one-hot vector corresponding to word 4567. Can we call <img src="https://render.githubusercontent.com/render/math?math=\color{white}A * o_{4567}"> in Python to get the embedding of word 4567?**
 
 > The element-wise multiplication is extremely inefficient. 
+
+
+**What the four steps of sampling?**
+
+> 1. Input the "dummy" vector of zeros  <img src="https://render.githubusercontent.com/render/math?math=\color{white}𝑥^{<1>}=\vec{0}"> and <img src="https://render.githubusercontent.com/render/math?math=\color{white}a^{<0>}=\vec{0}">
+> 2. Run one step of forward pass to get <img src="https://render.githubusercontent.com/render/math?math=\color{white}a^{<t+1>}"> and <img src="https://render.githubusercontent.com/render/math?math=\color{white}\hat{y}^{<t+1>}">
+> 3. Sampling the next index with the probability in <img src="https://render.githubusercontent.com/render/math?math=\color{white}\hat{y}^{<t+1>}">. Use `np.random.choice`
+> 4. Update to <img src="https://render.githubusercontent.com/render/math?math=\color{white}x^{<t>}">. Set `x[idx] = 1`
