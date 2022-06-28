@@ -766,7 +766,7 @@ Hochreiter, S., & Schmidhuber, J. (1997). [Long short-term memory. Neural comput
 
 **Sarah proposes to simplify the GRU by always removing the $\Gamma_u$. I.e., setting $\Gamma_u$ = 0. Ashely proposes to simplify the GRU by removing the $\Gamma_r$. I. e., setting $\Gamma_r$= 1 always. Which of these models is more likely to work without vanishing gradient problems even when trained on very long input sequences?**
 
-> No. For the signal to backpropagate without vanishing, we need c<t> to be highly dependent on $c^{<t−1>}$.
+> No. For the signal to backpropagate without vanishing, we need c<t> to be highly dependent on $c^{<t-1>}$.
 
 [⬆️ Back to top](#table-of-contents)
 

@@ -50,31 +50,31 @@ Week 1 is the overview of the course and specialization.
 
 | Param      | Description | 
 | ----------- | ----------- | 
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}m"> |  number of observations | 
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}n_x"> |  number of features (input data) |
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}L"> |  number of layers. <img src="https://render.githubusercontent.com/render/math?math=\color{white}l=0">: input layer |
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}n^{[l]}">  | number of units (features) at layer <img src="https://render.githubusercontent.com/render/math?math=\color{white}l">. <img src="https://render.githubusercontent.com/render/math?math=\color{white}n^{[0]} = n_x">   |
+| <img src="https://latex.codecogs.com/png.latex?\color{white}m"> |  number of observations | 
+| <img src="https://latex.codecogs.com/png.latex?\color{white}n_x"> |  number of features (input data) |
+| <img src="https://latex.codecogs.com/png.latex?\color{white}L"> |  number of layers. <img src="https://latex.codecogs.com/png.latex?\color{white}l=0">: input layer |
+| <img src="https://latex.codecogs.com/png.latex?\color{white}n^{[l]}">  | number of units (features) at layer <img src="https://latex.codecogs.com/png.latex?\color{white}l">. <img src="https://latex.codecogs.com/png.latex?\color{white}n^{[0]} = n_x">   |
 
 
 
 | Matrix      | Shape | 
 | ----------- | ----------- | 
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}X"> |      <img src="https://render.githubusercontent.com/render/math?math=\color{white}(n_x, m)"> | 
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}W^{[l]}">   |   <img src="https://render.githubusercontent.com/render/math?math=\color{white}(n^{[l]}, n^{[l-1]}) ">  | 
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}Z^{[l]}">   |  <img src="https://render.githubusercontent.com/render/math?math=\color{white}(n^{[l]}, m)">   |
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}A^{[l]}">   |  <img src="https://render.githubusercontent.com/render/math?math=\color{white}(n^{[l]}, m)">   |
+| <img src="https://latex.codecogs.com/png.latex?\color{white}X"> |      <img src="https://latex.codecogs.com/png.latex?\color{white}(n_x, m)"> | 
+| <img src="https://latex.codecogs.com/png.latex?\color{white}W^{[l]}">   |   <img src="https://latex.codecogs.com/png.latex?\color{white}(n^{[l]}, n^{[l-1]}) ">  | 
+| <img src="https://latex.codecogs.com/png.latex?\color{white}Z^{[l]}">   |  <img src="https://latex.codecogs.com/png.latex?\color{white}(n^{[l]}, m)">   |
+| <img src="https://latex.codecogs.com/png.latex?\color{white}A^{[l]}">   |  <img src="https://latex.codecogs.com/png.latex?\color{white}(n^{[l]}, m)">   |
 
 
 
 To better memberize
 
-<img src="https://render.githubusercontent.com/render/math?math=\color{white}W^{[l]}">:
+<img src="https://latex.codecogs.com/png.latex?\color{white}W^{[l]}">:
 ```
 num of row: number of units of the next layer
 num of col: number of units of the current layer
 ```
 
-<img src="https://render.githubusercontent.com/render/math?math=\color{white}Z^{[l]}"> and <img src="https://render.githubusercontent.com/render/math?math=\color{white}A^{[l]}">:
+<img src="https://latex.codecogs.com/png.latex?\color{white}Z^{[l]}"> and <img src="https://latex.codecogs.com/png.latex?\color{white}A^{[l]}">:
 ```
 num of row: number of units of the next layer
 num of col: number of observations
@@ -90,8 +90,8 @@ num of col: number of observations
 | ----------- | ----------- | ----------- | 
 | Sigmoid     | (0, 1)       |  good for output layer of binary classification   |
 | Tanh        | (-1, 1)  |  center data, mean of data is close to 0, makes learning for next layer a bit easier  |
-| ReLU        |  (0, <img src="https://render.githubusercontent.com/render/math?math=\color{white}\infty">)   |  derivative of slope is 1 when z > 0,  is 0 when z < 0  | 
-| Leasky ReLU  |  (-<img src="https://render.githubusercontent.com/render/math?math=\color{white}\infty">, <img src="https://render.githubusercontent.com/render/math?math=\color{white}\infty">)    |
+| ReLU        |  (0, <img src="https://latex.codecogs.com/png.latex?\color{white}\infty">)   |  derivative of slope is 1 when z > 0,  is 0 when z < 0  | 
+| Leasky ReLU  |  (-<img src="https://latex.codecogs.com/png.latex?\color{white}\infty">, <img src="https://latex.codecogs.com/png.latex?\color{white}\infty">)    |
 
 
 
@@ -100,14 +100,14 @@ num of col: number of observations
 > If we use linear activation functions, no matter how many layers you have, the NN is just computing a linear function. 
 
 
-**Why do we usually initialize <img src="https://render.githubusercontent.com/render/math?math=\color{white}W"> as small random values?** 
+**Why do we usually initialize <img src="https://latex.codecogs.com/png.latex?\color{white}W"> as small random values?** 
 
 > large W -> large Z (Z = WX + b) -> end up at the flat parts of Sigmoid function 
 -> gradient will be small -> gradient descent will be slow -> learning will be slow
 >
 >If you're not using Sigmoid or Tanh activation functions, it is less of an issue. But note if you're doing a binary classification, the output layer will be a Sigmoid function. 
 
-**What distribution should we draw <img src="https://render.githubusercontent.com/render/math?math=\color{white}W"> from?**
+**What distribution should we draw <img src="https://latex.codecogs.com/png.latex?\color{white}W"> from?**
 
 > Normal distirbution. 
 >
@@ -120,8 +120,8 @@ num of col: number of observations
 > 
 > So at the second iteration, the weights values follow x's distribution and are different from each other if x is not a constant vector. 
 >
-> But in deep learning we should randomly initialize either <img src="https://render.githubusercontent.com/render/math?math=\color{white}W"> or <img src="https://render.githubusercontent.com/render/math?math=\color{white}b"> to "break symmetry". 
-If both <img src="https://render.githubusercontent.com/render/math?math=\color{white}W"> and <img src="https://render.githubusercontent.com/render/math?math=\color{white}b"> values zero, <img src="https://render.githubusercontent.com/render/math?math=\color{white}A^{[1]}"> will be 0 because *tanh(0)=0*. 
+> But in deep learning we should randomly initialize either <img src="https://latex.codecogs.com/png.latex?\color{white}W"> or <img src="https://latex.codecogs.com/png.latex?\color{white}b"> to "break symmetry". 
+If both <img src="https://latex.codecogs.com/png.latex?\color{white}W"> and <img src="https://latex.codecogs.com/png.latex?\color{white}b"> values zero, <img src="https://latex.codecogs.com/png.latex?\color{white}A^{[1]}"> will be 0 because *tanh(0)=0*. 
 >Using non-zero initialization but making them all the same does not work either. Though we can *learn* new values, but the values we get are symmetric, means it's the same as a network with a single neuron. 
 >
 >Reference: [Symmetry Breaking versus Zero Initialization](https://community.deeplearning.ai/t/symmetry-breaking-versus-zero-initialization/16061)
@@ -194,7 +194,7 @@ What will be B.shape?**
 
 **What are the differences between L1 and L2 regularization?**
 
-| Regularization | Penalize | <img src="https://render.githubusercontent.com/render/math?math=\color{white}W"> | Feature selection | 
+| Regularization | Penalize | <img src="https://latex.codecogs.com/png.latex?\color{white}W"> | Feature selection | 
 | -- | -- | -- | -- |
 | L1 | sum of absolute values of the weights | sparse | Yes |
 | L2 | sum of squares of the weights | non-sparse | No |  
@@ -236,7 +236,7 @@ dA1 = dA1 / keep_prob
 
 **How to deal with vanishing gradient?**
 
-> A partial solution: force the variance of <img src="https://render.githubusercontent.com/render/math?math=\color{white}W"> to be constant and smaller. A recommended value is <img src="https://render.githubusercontent.com/render/math?math=\color{white}\frac{1}{n}"> but it depends on the activation function.  
+> A partial solution: force the variance of <img src="https://latex.codecogs.com/png.latex?\color{white}W"> to be constant and smaller. A recommended value is <img src="https://latex.codecogs.com/png.latex?\color{white}\frac{1}{n}"> but it depends on the activation function.  
 
 [⬆️ Back to top](#table-of-contents)
 
@@ -266,9 +266,9 @@ It depends on the context, we should test with different sizes
 <details>
     <summary>Click to see answer</summary>
 
-><img src="https://render.githubusercontent.com/render/math?math=\color{white}v_t = \beta v_{t-1} + (1-\beta) \theta_t">
+><img src="https://latex.codecogs.com/png.latex?\color{white}v_t = \beta v_{t-1} + (1-\beta) \theta_t">
 >
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}v^{corrected}_t = \frac{v_t}{1-\beta^t}">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}v^{corrected}_t = \frac{v_t}{1-\beta^t}">
 
 </details>
 
@@ -280,15 +280,15 @@ It depends on the context, we should test with different sizes
 
 **Which of these is NOT a good learning rate decay scheme? Here, t is the epoch number.**
 
-1. <img src="https://render.githubusercontent.com/render/math?math=\color{white}\alpha=0.95^t\alpha_0">
-2. <img src="https://render.githubusercontent.com/render/math?math=\color{white}\alpha=e^t\alpha_0">
-3. <img src="https://render.githubusercontent.com/render/math?math=\color{white}\alpha=\frac{1}{1+2*t}\alpha_0">
-4. <img src="https://render.githubusercontent.com/render/math?math=\color{white}\alpha=\frac{1}{\sqrt{t}}\alpha_0">
+1. <img src="https://latex.codecogs.com/png.latex?\color{white}\alpha=0.95^t\alpha_0">
+2. <img src="https://latex.codecogs.com/png.latex?\color{white}\alpha=e^t\alpha_0">
+3. <img src="https://latex.codecogs.com/png.latex?\color{white}\alpha=\frac{1}{1+2*t}\alpha_0">
+4. <img src="https://latex.codecogs.com/png.latex?\color{white}\alpha=\frac{1}{\sqrt{t}}\alpha_0">
 
 <details>
     <summary>Click to see answer</summary>
 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}\alpha=e^t\alpha_0"> explodes <img src="https://render.githubusercontent.com/render/math?math=\color{white}\alpha"> instead of decaying it
+> <img src="https://latex.codecogs.com/png.latex?\color{white}\alpha=e^t\alpha_0"> explodes <img src="https://latex.codecogs.com/png.latex?\color{white}\alpha"> instead of decaying it
 
 </details>
 
@@ -299,15 +299,15 @@ It depends on the context, we should test with different sizes
 <details>
     <summary>Click to see answer</summary>
 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}v_{dW^{[l]}} = \beta_1 v_{dW^{[l]}} + (1-\beta_1) \frac{\partial J}{\partial W^{[l]}}">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}v_{dW^{[l]}} = \beta_1 v_{dW^{[l]}} + (1-\beta_1) \frac{\partial J}{\partial W^{[l]}}">
 > 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}v_{dW^{[l]}} ^{correted} = \frac{v_{dW^{[l]}}}{1 - (\beta_1)^t}">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}v_{dW^{[l]}} ^{correted} = \frac{v_{dW^{[l]}}}{1 - (\beta_1)^t}">
 >
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}s_{dW^{[l]}} = \beta_2 v_{dW^{[l]}} + (1-\beta_2) (\frac{\partial J}{\partial W^{[l]}}) ^2">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}s_{dW^{[l]}} = \beta_2 v_{dW^{[l]}} + (1-\beta_2) (\frac{\partial J}{\partial W^{[l]}}) ^2">
 >
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}s_{dW^{[l]}} ^{correted} = \frac{s_{dW^{[l]}}}{1 - (\beta_2)^t}">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}s_{dW^{[l]}} ^{correted} = \frac{s_{dW^{[l]}}}{1 - (\beta_2)^t}">
 > 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}W^{[l]} = W^{[l]} - \alpha \frac{v^{corrected}_{dW^{[l]}}}  {\sqrt{s_{dW^{[l]}} ^{correted}} + \varepsilon}">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}W^{[l]} = W^{[l]} - \alpha \frac{v^{corrected}_{dW^{[l]}}}  {\sqrt{s_{dW^{[l]}} ^{correted}} + \varepsilon}">
 
 </details>
 
@@ -320,10 +320,10 @@ It depends on the context, we should test with different sizes
 
 > Normalization can make training faster and hyperparameters more robust. 
 >
-> Values of each hidden layer are changing all the time because of changes in <img src="https://render.githubusercontent.com/render/math?math=\color{white}W"> and <img src="https://render.githubusercontent.com/render/math?math=\color{white}b">, suffering from the problem of covariance shift. Batch normalization guarantees the mean and variance of features of each layer (e.g., <img src="https://render.githubusercontent.com/render/math?math=\color{white}Z^{[2]}_1">, <img src="https://render.githubusercontent.com/render/math?math=\color{white}Z^{[2]}_2">) keep the same no matter how actual values of each node changes. 
+> Values of each hidden layer are changing all the time because of changes in <img src="https://latex.codecogs.com/png.latex?\color{white}W"> and <img src="https://latex.codecogs.com/png.latex?\color{white}b">, suffering from the problem of covariance shift. Batch normalization guarantees the mean and variance of features of each layer (e.g., <img src="https://latex.codecogs.com/png.latex?\color{white}Z^{[2]}_1">, <img src="https://latex.codecogs.com/png.latex?\color{white}Z^{[2]}_2">) keep the same no matter how actual values of each node changes. 
 > It allows each layer to learn by itself (more independently than no batch normalization), and speed up learning. 
 >
-> Mean and variance are governed by two learnable parameters <img src="https://render.githubusercontent.com/render/math?math=\color{white}\gamma"> and <img src="https://render.githubusercontent.com/render/math?math=\color{white}\beta">. Adding <img src="https://render.githubusercontent.com/render/math?math=\color{white}\gamma"> and <img src="https://render.githubusercontent.com/render/math?math=\color{white}\beta"> is because we don't want all the layers have the same mean and variance (mean = 0, variance = 1).
+> Mean and variance are governed by two learnable parameters <img src="https://latex.codecogs.com/png.latex?\color{white}\gamma"> and <img src="https://latex.codecogs.com/png.latex?\color{white}\beta">. Adding <img src="https://latex.codecogs.com/png.latex?\color{white}\gamma"> and <img src="https://latex.codecogs.com/png.latex?\color{white}\beta"> is because we don't want all the layers have the same mean and variance (mean = 0, variance = 1).
 
 
 **Batch normalization fomula?**
@@ -331,7 +331,7 @@ It depends on the context, we should test with different sizes
 <details>
     <summary>Click to see answer</summary>
 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}z_{norm}^{(i)} = \frac{z^{(i) - \mu}}{\sqrt{\sigma^2 + \epsilon}}">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}z_{norm}^{(i)} = \frac{z^{(i) - \mu}}{\sqrt{\sigma^2 + \epsilon}}">
 
 </details>
 
@@ -349,13 +349,13 @@ It depends on the context, we should test with different sizes
 
 | Hyperparameter | common value | 
 | --- | --- |
-| learning rate <img src="https://render.githubusercontent.com/render/math?math=\color{white}\alpha"> | <img src="https://render.githubusercontent.com/render/math?math=\color{white}r\in [-4,0], \alpha=10^r"> | 
-| momentum <img src="https://render.githubusercontent.com/render/math?math=\color{white}\beta"> | around 0.9 | 
-| mini-batch size | <img src="https://render.githubusercontent.com/render/math?math=\color{white}2^n"> | 
+| learning rate <img src="https://latex.codecogs.com/png.latex?\color{white}\alpha"> | <img src="https://latex.codecogs.com/png.latex?\color{white}r\in [-4,0], \alpha=10^r"> | 
+| momentum <img src="https://latex.codecogs.com/png.latex?\color{white}\beta"> | around 0.9 | 
+| mini-batch size | <img src="https://latex.codecogs.com/png.latex?\color{white}2^n"> | 
 | # of hidden units | - |
-| learning rate decay | <img src="https://render.githubusercontent.com/render/math?math=\color{white}10^r"> |
-| # of layers <img src="https://render.githubusercontent.com/render/math?math=\color{white}L"> | - | 
-| batch normalization <img src="https://render.githubusercontent.com/render/math?math=\color{white}\beta_1">, <img src="https://render.githubusercontent.com/render/math?math=\color{white}\beta_2">, <img src="https://render.githubusercontent.com/render/math?math=\color{white}\epsilon"> | 0.9, 0.99, <img src="https://render.githubusercontent.com/render/math?math=\color{white}10^{-8}"> | 
+| learning rate decay | <img src="https://latex.codecogs.com/png.latex?\color{white}10^r"> |
+| # of layers <img src="https://latex.codecogs.com/png.latex?\color{white}L"> | - | 
+| batch normalization <img src="https://latex.codecogs.com/png.latex?\color{white}\beta_1">, <img src="https://latex.codecogs.com/png.latex?\color{white}\beta_2">, <img src="https://latex.codecogs.com/png.latex?\color{white}\epsilon"> | 0.9, 0.99, <img src="https://latex.codecogs.com/png.latex?\color{white}10^{-8}"> | 
 
 
 [⬆️ Back to top](#table-of-contents)
@@ -436,17 +436,17 @@ It depends on the context, we should test with different sizes
 
 | Param      | Description | 
 | ----------- | ----------- | 
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}f^{[l]}"> |  filter size |
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}p^{[l]}"> | padding |
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}s^{[l]}"> | stride | 
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}n_c^{[l]}"> | number of filters | 
+| <img src="https://latex.codecogs.com/png.latex?\color{white}f^{[l]}"> |  filter size |
+| <img src="https://latex.codecogs.com/png.latex?\color{white}p^{[l]}"> | padding |
+| <img src="https://latex.codecogs.com/png.latex?\color{white}s^{[l]}"> | stride | 
+| <img src="https://latex.codecogs.com/png.latex?\color{white}n_c^{[l]}"> | number of filters | 
 
 | Metric      | Dimension | 
 | ----------- | ----------- | 
-| Filter |  <img src="https://render.githubusercontent.com/render/math?math=\color{white}(f^{[l]}, f^{[l]}, n_c^{[l]})"> |
-| Activations | <img src="https://render.githubusercontent.com/render/math?math=\color{white}(n_H^{[l]}, n_W^{[l]}, n_c^{[l]})"> |
-| Weights | <img src="https://render.githubusercontent.com/render/math?math=\color{white}(f^{[l]}, f^{[l]}, n_c^{[l-1]}, n_c^{[l]})"> | 
-| bias | <img src="https://render.githubusercontent.com/render/math?math=\color{white}(1, 1, 1, n_c^{[l]})"> | 
+| Filter |  <img src="https://latex.codecogs.com/png.latex?\color{white}(f^{[l]}, f^{[l]}, n_c^{[l]})"> |
+| Activations | <img src="https://latex.codecogs.com/png.latex?\color{white}(n_H^{[l]}, n_W^{[l]}, n_c^{[l]})"> |
+| Weights | <img src="https://latex.codecogs.com/png.latex?\color{white}(f^{[l]}, f^{[l]}, n_c^{[l-1]}, n_c^{[l]})"> | 
+| bias | <img src="https://latex.codecogs.com/png.latex?\color{white}(1, 1, 1, n_c^{[l]})"> | 
 
 **What is valid and same convolutions?**
 
@@ -456,7 +456,7 @@ It depends on the context, we should test with different sizes
 
 **How to calculate the dimension of next conv layer?**
 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}\lfloor \frac{n+2p-f}{s} +1 \rfloor \times \lfloor \frac{n+2p-f}{s} +1 \rfloor">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}\lfloor \frac{n+2p-f}{s} +1 \rfloor \times \lfloor \frac{n+2p-f}{s} +1 \rfloor">
 
 **Input is a 300 by 300 color (RGB) image, and you use a convolutional layer with 100 filters that are each 5x5. How many parameters does this hidden layer have (including the bias parameters)?**
 
@@ -525,7 +525,7 @@ It depends on the context, we should test with different sizes
 
 
 
-**Suppose that in a MobileNet v2 Bottleneck block we have an <img src="https://render.githubusercontent.com/render/math?math=\color{white}n\times n \times 5"> input volume. We use 30 filters for the expansion. In the depthwise convolutions we use <img src="https://render.githubusercontent.com/render/math?math=\color{white}3 \times 3"> filters, and 20 filters for the projection.**
+**Suppose that in a MobileNet v2 Bottleneck block we have an <img src="https://latex.codecogs.com/png.latex?\color{white}n\times n \times 5"> input volume. We use 30 filters for the expansion. In the depthwise convolutions we use <img src="https://latex.codecogs.com/png.latex?\color{white}3 \times 3"> filters, and 20 filters for the projection.**
 
 **How many parameters are used in the complete block, suppose we don't use bias?**
 
@@ -562,21 +562,21 @@ It depends on the context, we should test with different sizes
 
 **How to evaluate object localization?**
 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}IoU = \frac{size\ of\ intersection}{size\ of\ union} ">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}IoU = \frac{size\ of\ intersection}{size\ of\ union} ">
 
 **How does non-max suppression work?**
 
 > While BoundingBoxes: 
 >  
-> - Pick the box with the highest score (<img src="https://render.githubusercontent.com/render/math?math=\color{white}p_c * c_i">), add it to ouput list 
+> - Pick the box with the highest score (<img src="https://latex.codecogs.com/png.latex?\color{white}p_c * c_i">), add it to ouput list 
 > - Calculate the overlap IoU of this box and all the other boxes. Discard boxes that overlap significantly (`iou >= iou_threshold`). 
 > - Repeat the steps above until there are no more boxes with a lower score than the currently selected box.
 
-**What is the dimension of one grid in YOLO? Suppose there are <img src="https://render.githubusercontent.com/render/math?math=\color{white}C"> classes and <img src="https://render.githubusercontent.com/render/math?math=\color{white}A"> anchors**
+**What is the dimension of one grid in YOLO? Suppose there are <img src="https://latex.codecogs.com/png.latex?\color{white}C"> classes and <img src="https://latex.codecogs.com/png.latex?\color{white}A"> anchors**
 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}A \times (C + 5)"> 
+> <img src="https://latex.codecogs.com/png.latex?\color{white}A \times (C + 5)"> 
 > 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}5: [p_c, b_x, b_y, b_h, b_w]">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}5: [p_c, b_x, b_y, b_h, b_w]">
 
 **How does Transposed Convolution work?**
 
@@ -602,7 +602,7 @@ Read more:
 
 **What is the dimension of U-Net archiecture output?**
 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}h \times w \times k"> where <img src="https://render.githubusercontent.com/render/math?math=\color{white}k"> is the number of classes
+> <img src="https://latex.codecogs.com/png.latex?\color{white}h \times w \times k"> where <img src="https://latex.codecogs.com/png.latex?\color{white}k"> is the number of classes
 
 [⬆️ Back to top](#table-of-contents)
 
@@ -631,31 +631,31 @@ Read more:
 
 **What is the cost function of style transfer?**
 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}J(G) = \alpha J_{content}(C, G) + \beta J_{style}(S, G)">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}J(G) = \alpha J_{content}(C, G) + \beta J_{style}(S, G)">
 >
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}G">: generated image.
+> <img src="https://latex.codecogs.com/png.latex?\color{white}G">: generated image.
 >  
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}C">: content image. 
+> <img src="https://latex.codecogs.com/png.latex?\color{white}C">: content image. 
 > 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}S">: style image. 
+> <img src="https://latex.codecogs.com/png.latex?\color{white}S">: style image. 
 > 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}G_{gram}">: gram matrix
+> <img src="https://latex.codecogs.com/png.latex?\color{white}G_{gram}">: gram matrix
 > 
 > Content cost. For each layer: 
 >
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}J_{content}(C,G)^{[l]} = \frac{1}{2} \Vert a^{[l](C)} - a^{[l](G)} \Vert^2 ">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}J_{content}(C,G)^{[l]} = \frac{1}{2} \Vert a^{[l](C)} - a^{[l](G)} \Vert^2 ">
 > 
 > Content cost. For all the entries
 >
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}J_{content}(C,G) = \frac{1}{4 \times n_H \times n_W \times n_C} \sum_{all entries}( a^{(C)} - a^{(G)} )^2 ">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}J_{content}(C,G) = \frac{1}{4 \times n_H \times n_W \times n_C} \sum_{all entries}( a^{(C)} - a^{(G)} )^2 ">
 > 
 > Style cost. For each layer: 
 >
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}J^{[l]}_{style}(S, G) = \frac{1}{(2 n^{[l]}_H n^{[l]}_W n^{[l]}_C)^2}    \sum\limits_{i=1}^{n_C}     \sum\limits_{j=1}^{n_C}     (G^{[l](S)}_{(gram) i, j} - G^{[l](G)}_{(gram) i,j})^2 ">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}J^{[l]}_{style}(S, G) = \frac{1}{(2 n^{[l]}_H n^{[l]}_W n^{[l]}_C)^2}    \sum\limits_{i=1}^{n_C}     \sum\limits_{j=1}^{n_C}     (G^{[l](S)}_{(gram) i, j} - G^{[l](G)}_{(gram) i,j})^2 ">
 > 
 > Style cost. For all entries: 
 > 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}J_{style} (S,G) = \sum\limits_l \lambda^{[l]} J ^{[l]}_{style} (S,G) ">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}J_{style} (S,G) = \sum\limits_l \lambda^{[l]} J ^{[l]}_{style} (S,G) ">
 
 [⬆️ Back to top](#table-of-contents)
 
@@ -672,18 +672,18 @@ Read more:
 
 | Param      | Description | 
 | ----------- | ----------- | 
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}x^{(i)<t>}"> |  the t th element in the training sequence i |
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}T_x^{(i)}"> | the length of training sequence i |
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}y^{(i)<t>}"> | the t th element in the output sequence i | 
-| <img src="https://render.githubusercontent.com/render/math?math=\color{white}T_y^{(i)}"> | the length of output sequence i |
+| <img src="https://latex.codecogs.com/png.latex?\color{white}x^{(i)<t>}"> |  the t th element in the training sequence i |
+| <img src="https://latex.codecogs.com/png.latex?\color{white}T_x^{(i)}"> | the length of training sequence i |
+| <img src="https://latex.codecogs.com/png.latex?\color{white}y^{(i)<t>}"> | the t th element in the output sequence i | 
+| <img src="https://latex.codecogs.com/png.latex?\color{white}T_y^{(i)}"> | the length of output sequence i |
 
 **What is the formula of forward propagation?**
 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}a^{<t>} = g(W_{aa}a^{<t-1>} + W_{ax}x^{<t>} + b_a)">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}a^{<t>} = g(W_{aa}a^{<t-1>} + W_{ax}x^{<t>} + b_a)">
 >
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}y^{<t>} = g(W_{ya}a^{<t>} + b_y)">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}y^{<t>} = g(W_{ya}a^{<t>} + b_y)">
 > 
-> Here <img src="https://render.githubusercontent.com/render/math?math=\color{white}W_{ax}">, the second index means <img src="https://render.githubusercontent.com/render/math?math=\color{white}W_{ax}"> will be multiplied by some x-like quantity, to compute some a-like quantity. 
+> Here <img src="https://latex.codecogs.com/png.latex?\color{white}W_{ax}">, the second index means <img src="https://latex.codecogs.com/png.latex?\color{white}W_{ax}"> will be multiplied by some x-like quantity, to compute some a-like quantity. 
 
 **List some examples of RNN architectures**
 
@@ -726,16 +726,16 @@ def optimize(X, Y, a_prev, parameters, learning_rate):
 
 **What is the formula of Gated Recurrent Unit (GRU)?**
 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}\tilde{c}^{<t>} = tanh(W_c[\Gamma_r * c^{<t-1>}, x^{<t>}] + b_c)">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}\tilde{c}^{<t>} = tanh(W_c[\Gamma_r * c^{<t-1>}, x^{<t>}] + b_c)">
 >
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}\Gamma_u">: updated gate, (0,1)
+> <img src="https://latex.codecogs.com/png.latex?\color{white}\Gamma_u">: updated gate, (0,1)
 >
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}\Gamma_u = \sigma(W_u[c^{<t-1>}, x^{<t>}] + b_u)"> 
+> <img src="https://latex.codecogs.com/png.latex?\color{white}\Gamma_u = \sigma(W_u[c^{<t-1>}, x^{<t>}] + b_u)"> 
 > 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}\Gamma_r">: how relevant <img src="https://render.githubusercontent.com/render/math?math=\color{white}c^{<t-1>}"> is to <img src="https://render.githubusercontent.com/render/math?math=\color{white}\tilde{c}^{<t>}">. Same update method with <img src="https://render.githubusercontent.com/render/math?math=\color{white}\Gamma_u">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}\Gamma_r">: how relevant <img src="https://latex.codecogs.com/png.latex?\color{white}c^{<t-1>}"> is to <img src="https://latex.codecogs.com/png.latex?\color{white}\tilde{c}^{<t>}">. Same update method with <img src="https://latex.codecogs.com/png.latex?\color{white}\Gamma_u">
 >
 > 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}c^{<t>} = \Gamma_u * \tilde{c}^{<t>} + (1-\Gamma_u) * c^{<t-1>}">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}c^{<t>} = \Gamma_u * \tilde{c}^{<t>} + (1-\Gamma_u) * c^{<t-1>}">
 
 Cho, K., Van Merriënboer, B., Bahdanau, D., & Bengio, Y. (2014). [On the properties of neural machine translation: Encoder-decoder approaches.](https://arxiv.org/pdf/1409.1259.pdf)
 
@@ -746,11 +746,11 @@ Hochreiter, S., & Schmidhuber, J. (1997). [Long short-term memory. Neural comput
 
 **How does LSTM differ from GRU?**
 
-> Instead of having one update gate controls <img src="https://render.githubusercontent.com/render/math?math=\color{white}\tilde{c}^{<t>}"> and <img src="https://render.githubusercontent.com/render/math?math=\color{white}c^{<t-1>}">, LSTM has two separate gates <img src="https://render.githubusercontent.com/render/math?math=\color{white}\Gamma_u"> and <img src="https://render.githubusercontent.com/render/math?math=\color{white}\Gamma_f"> (forget gate). 
+> Instead of having one update gate controls <img src="https://latex.codecogs.com/png.latex?\color{white}\tilde{c}^{<t>}"> and <img src="https://latex.codecogs.com/png.latex?\color{white}c^{<t-1>}">, LSTM has two separate gates <img src="https://latex.codecogs.com/png.latex?\color{white}\Gamma_u"> and <img src="https://latex.codecogs.com/png.latex?\color{white}\Gamma_f"> (forget gate). 
 >
-> Update <img src="https://render.githubusercontent.com/render/math?math=\color{white}c^{<t>}">: 
+> Update <img src="https://latex.codecogs.com/png.latex?\color{white}c^{<t>}">: 
 >
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}c^{<t>} = \Gamma_u * \tilde{c}^{<t>} + \Gamma_f * c^{<t-1>}">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}c^{<t>} = \Gamma_u * \tilde{c}^{<t>} + \Gamma_f * c^{<t-1>}">
 
 **What are the disadvantages of Bidirectional RNN?**
 
@@ -764,9 +764,9 @@ Hochreiter, S., & Schmidhuber, J. (1997). [Long short-term memory. Neural comput
 
 > Gradient exploding. It happens when large error gradients accumulate and result in very large updates to the NN model weights during training. These weights can become too large and cause an overflow, identified as NaN.
 
-**Sarah proposes to simplify the GRU by always removing the <img src="https://render.githubusercontent.com/render/math?math=\color{white}\Gamma_u">. I.e., setting <img src="https://render.githubusercontent.com/render/math?math=\color{white}\Gamma_u"> = 0. Ashely proposes to simplify the GRU by removing the <img src="https://render.githubusercontent.com/render/math?math=\color{white}\Gamma_r">. I. e., setting <img src="https://render.githubusercontent.com/render/math?math=\color{white}\Gamma_r">= 1 always. Which of these models is more likely to work without vanishing gradient problems even when trained on very long input sequences?**
+**Sarah proposes to simplify the GRU by always removing the <img src="https://latex.codecogs.com/png.latex?\color{white}\Gamma_u">. I.e., setting <img src="https://latex.codecogs.com/png.latex?\color{white}\Gamma_u"> = 0. Ashely proposes to simplify the GRU by removing the <img src="https://latex.codecogs.com/png.latex?\color{white}\Gamma_r">. I. e., setting <img src="https://latex.codecogs.com/png.latex?\color{white}\Gamma_r">= 1 always. Which of these models is more likely to work without vanishing gradient problems even when trained on very long input sequences?**
 
-> No. For the signal to backpropagate without vanishing, we need c<t> to be highly dependent on <img src="https://render.githubusercontent.com/render/math?math=\color{white}c^{<t−1>}">.
+> No. For the signal to backpropagate without vanishing, we need c<t> to be highly dependent on <img src="https://latex.codecogs.com/png.latex?\color{white}c^{<t-1>}">.
 
 [⬆️ Back to top](#table-of-contents)
 
@@ -791,11 +791,11 @@ Hochreiter, S., & Schmidhuber, J. (1997). [Long short-term memory. Neural comput
 
 **What is the learning objective of GloVe?**
 
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}minimize \sum{}^{10,000}_{i=1} \sum{}^{10,000}_{j=1} f(X_{ij}) (\theta_j^T e_j + b_i + b'_j - logX_{ij} )^2 ">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}minimize \sum{}^{10,000}_{i=1} \sum{}^{10,000}_{j=1} f(X_{ij}) (\theta_j^T e_j + b_i + b'_j - logX_{ij} )^2 ">
 >
-> <img src="https://render.githubusercontent.com/render/math?math=\color{white}X_{ij}"> = # of times <img src="https://render.githubusercontent.com/render/math?math=\color{white}j"> appears in the context of <img src="https://render.githubusercontent.com/render/math?math=\color{white}i">
+> <img src="https://latex.codecogs.com/png.latex?\color{white}X_{ij}"> = # of times <img src="https://latex.codecogs.com/png.latex?\color{white}j"> appears in the context of <img src="https://latex.codecogs.com/png.latex?\color{white}i">
 > 
-> depending on the definition of "context", <img src="https://render.githubusercontent.com/render/math?math=\color{white}X_{ij}"> and <img src="https://render.githubusercontent.com/render/math?math=\color{white}X_{ji}"> may be symmetric. 
+> depending on the definition of "context", <img src="https://latex.codecogs.com/png.latex?\color{white}X_{ij}"> and <img src="https://latex.codecogs.com/png.latex?\color{white}X_{ji}"> may be symmetric. 
 
 **Debiasing word embeddings**
 
@@ -810,14 +810,14 @@ Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [
 > 
 > Determine gender specific words: first listed218 words from dictionary, then trained a SVM to classify 3M words in w2vNEWS, resulting in 6,449 gender-specific words. 
 
-**<img src="https://render.githubusercontent.com/render/math?math=\color{white}A"> is an embedding matrix, <img src="https://render.githubusercontent.com/render/math?math=\color{white}o_{4567}"> is a one-hot vector corresponding to word 4567. Can we call <img src="https://render.githubusercontent.com/render/math?math=\color{white}A * o_{4567}"> in Python to get the embedding of word 4567?**
+**<img src="https://latex.codecogs.com/png.latex?\color{white}A"> is an embedding matrix, <img src="https://latex.codecogs.com/png.latex?\color{white}o_{4567}"> is a one-hot vector corresponding to word 4567. Can we call <img src="https://latex.codecogs.com/png.latex?\color{white}A * o_{4567}"> in Python to get the embedding of word 4567?**
 
 > The element-wise multiplication is extremely inefficient. 
 
 
 **What the four steps of sampling?**
 
-> 1. Input the "dummy" vector of zeros  <img src="https://render.githubusercontent.com/render/math?math=\color{white}𝑥^{<1>}=\vec{0}"> and <img src="https://render.githubusercontent.com/render/math?math=\color{white}a^{<0>}=\vec{0}">
-> 2. Run one step of forward pass to get <img src="https://render.githubusercontent.com/render/math?math=\color{white}a^{<t+1>}"> and <img src="https://render.githubusercontent.com/render/math?math=\color{white}\hat{y}^{<t+1>}">
-> 3. Sampling the next index with the probability in <img src="https://render.githubusercontent.com/render/math?math=\color{white}\hat{y}^{<t+1>}">. Use `np.random.choice`
-> 4. Update to <img src="https://render.githubusercontent.com/render/math?math=\color{white}x^{<t>}">. Set `x[idx] = 1`
+> 1. Input the "dummy" vector of zeros  <img src="https://latex.codecogs.com/png.latex?\color{white}x^{<1>}=\vec{0}"> and <img src="https://latex.codecogs.com/png.latex?\color{white}a^{<0>}=\vec{0}">
+> 2. Run one step of forward pass to get <img src="https://latex.codecogs.com/png.latex?\color{white}a^{<t+1>}"> and <img src="https://latex.codecogs.com/png.latex?\color{white}\hat{y}^{<t+1>}">
+> 3. Sampling the next index with the probability in <img src="https://latex.codecogs.com/png.latex?\color{white}\hat{y}^{<t+1>}">. Use `np.random.choice`
+> 4. Update to <img src="https://latex.codecogs.com/png.latex?\color{white}x^{<t>}">. Set `x[idx] = 1`

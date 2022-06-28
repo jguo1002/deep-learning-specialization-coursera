@@ -7,11 +7,22 @@ import argparse
 import re
 
 
-def generate_image(math_equation, color):
+def generate_image(website, math_equation, color):
     math_equation = math_equation[1:-1]
-    # print("math_equation: ", math_equation)
     color = "\color{" + color + "}" if color != '' else ''
+    if website == "github":
+        return generate_image_github(math_equation, color)
+    elif website == "codecogs":
+        return generate_image_codecogs(math_equation, color)
+
+
+def generate_image_github(math_equation, color):
     render_url = f'https://render.githubusercontent.com/render/math?math={color}'
+    return f'<img src="{render_url}{math_equation}">'
+
+
+def generate_image_codecogs(math_equation, color):
+    render_url = f'https://latex.codecogs.com/png.latex?{color}'
     return f'<img src="{render_url}{math_equation}">'
 
 
@@ -40,7 +51,7 @@ if __name__ == "__main__":
             color = item['color']
             fileNameSuffix = item['fileNameSuffix']
             new_md = re.sub(
-                '\$[^\$]*\$', lambda x: generate_image(x.group(0), color), text)
+                '\$[^\$]*\$', lambda x: generate_image('codecogs', x.group(0), color), text)
 
             with open(f"{args.output_fname}{fileNameSuffix}.md", "w") as output_f:
                 for c in new_md:
