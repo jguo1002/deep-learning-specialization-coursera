@@ -1,6 +1,9 @@
 """
 render latex in github markdown
 https://gist.github.com/a-rodin/fef3f543412d6e1ec5b6cf55bf197d7b
+
+Update: switch to codecogs because some github images returns 404
+https://stackoverflow.com/questions/35498525/latex-rendering-in-readme-md-on-github
 """
 
 import argparse

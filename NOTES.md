@@ -23,7 +23,7 @@ Notes are taken in the format of QA.
 - [Course 5: Sequence Model](#course-5-sequence-model)
     - [Week 1: Recurrent Neural Network](#week-1-recurrent-neural-network)
     - [Week 2: Natural Language Processing & Word Embeddings](#week-2-natural-language-processing--word-embeddings)
-
+    - [Week 3: Sequence Models & Attention Mechanism](#week3-sequence-models--attention-mechanism)
 
 
 
@@ -821,3 +821,10 @@ Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [
 > 2. Run one step of forward pass to get $a^{<t+1>}$ and $\hat{y}^{<t+1>}$
 > 3. Sampling the next index with the probability in $\hat{y}^{<t+1>}$. Use `np.random.choice`
 > 4. Update to $x^{<t>}$. Set `x[idx] = 1`
+
+### Week3: Sequence Models & Attention Mechanism
+
+**Why not use greedy search?**
+
+> Picking the best first word one by one does not maximize the conditional probability. The translation may be a common English sentence but not the succinct translation. 
+
