@@ -828,3 +828,18 @@ Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [
 
 > Picking the best first word one by one does not maximize the conditional probability. The translation may be a common English sentence but not the succinct translation. 
 
+**How to pick beam width?**
+
+> Large beam width: better result, slower
+>
+> Small beam width: worse result: faster
+
+**How to figure if it's RNN or beam search fails the translation task?**
+
+> Compare $P(\hat{y}|x)$ and $P(y^*|x)$
+>
+> $P(\hat{y}|x)$ > $P(y^*|x)$ -> RNN
+> 
+> $P(\hat{y}|x)$ < $P(y^*|x)$ -> beam search
+
+

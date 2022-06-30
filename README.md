@@ -828,3 +828,18 @@ Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [
 
 > Picking the best first word one by one does not maximize the conditional probability. The translation may be a common English sentence but not the succinct translation. 
 
+**How to pick beam width?**
+
+> Large beam width: better result, slower
+>
+> Small beam width: worse result: faster
+
+**How to figure if it's RNN or beam search fails the translation task?**
+
+> Compare <img src="https://latex.codecogs.com/png.latex?\color{white}P(\hat{y}|x)"> and <img src="https://latex.codecogs.com/png.latex?\color{white}P(y^*|x)">
+>
+> <img src="https://latex.codecogs.com/png.latex?\color{white}P(\hat{y}|x)"> > <img src="https://latex.codecogs.com/png.latex?\color{white}P(y^*|x)"> -> RNN
+> 
+> <img src="https://latex.codecogs.com/png.latex?\color{white}P(\hat{y}|x)"> < <img src="https://latex.codecogs.com/png.latex?\color{white}P(y^*|x)"> -> beam search
+
+
