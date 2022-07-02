@@ -842,4 +842,25 @@ Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [
 > 
 > <img src="https://latex.codecogs.com/png.latex?P(\hat{y}|x)"> < <img src="https://latex.codecogs.com/png.latex?P(y^*|x)"> -> beam search
 
+**The attention model performs the same as the encoder-decoder model, no matter the sentence length. True/False?**
 
+> False.
+> 
+> Sentence length ↑ ,
+> encoder-decoder model performance ↓
+> 
+> The attention model has the greatest advantage when the input sequence length <img src="https://latex.codecogs.com/png.latex?T_x"> is large.
+
+**How does sentence normalization affect beam search result?**
+
+> If we carry out beam search without using sentence normalization, the algorithm will tend to output overly short translations.
+
+**The network learns where to “pay attention” by learning the values <img src="https://latex.codecogs.com/png.latex?e^{<t,t’>}">, which are computed using a small neural network: We can replace <img src="https://latex.codecogs.com/png.latex?s^{<t-1>}"> with <img src="https://latex.codecogs.com/png.latex?s^{<t>}"> as an input to this neural network because <img src="https://latex.codecogs.com/png.latex?s^{<t>}"> is independent of <img src="https://latex.codecogs.com/png.latex?\alpha^{<t,t’>}"> and <img src="https://latex.codecogs.com/png.latex?e^{<t,t’>}">. True/False?**
+
+ > We can't replace <img src="https://latex.codecogs.com/png.latex?s^{<t−1>}"> with <img src="https://latex.codecogs.com/png.latex?s^{<t>}"> as an input to this neural network. This is because <img src="https://latex.codecogs.com/png.latex?s^{<t>}"> depends on <img src="https://latex.codecogs.com/png.latex?\alpha^{<t,t'>}"> which in turn depends on and <img src="https://latex.codecogs.com/png.latex?e^{<t,t'>}">; so at the time we need to evaluate this network, we haven't computed <img src="https://latex.codecogs.com/png.latex?s^{<t>}">.
+
+**What is <img src="https://latex.codecogs.com/png.latex?a^{<t,t'>}"> in attention model?**
+
+<img src="https://latex.codecogs.com/png.latex?a^{<t,t'>} = \frac{exp(e^{<t,t'>})}{\sum^{T_x}_{t'=1} exp(e^{<t,t'>})}">
+
+ > <img src="https://latex.codecogs.com/png.latex?a^{<t,t'>}"> is equal to the amount of attention of <img src="https://latex.codecogs.com/png.latex?y^{<t>}"> should pay to <img src="https://latex.codecogs.com/png.latex?a^{<t'>}">

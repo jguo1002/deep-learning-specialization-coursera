@@ -842,4 +842,25 @@ Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [
 > 
 > $P(\hat{y}|x)$ < $P(y^*|x)$ -> beam search
 
+**The attention model performs the same as the encoder-decoder model, no matter the sentence length. True/False?**
 
+> False.
+> 
+> Sentence length ↑ ,
+> encoder-decoder model performance ↓
+> 
+> The attention model has the greatest advantage when the input sequence length $T_x$ is large.
+
+**How does sentence normalization affect beam search result?**
+
+> If we carry out beam search without using sentence normalization, the algorithm will tend to output overly short translations.
+
+**The network learns where to “pay attention” by learning the values $e^{<t,t’>}$, which are computed using a small neural network: We can replace $s^{<t-1>}$ with $s^{<t>}$ as an input to this neural network because $s^{<t>}$ is independent of $\alpha^{<t,t’>}$ and $e^{<t,t’>}$. True/False?**
+
+ > We can't replace $s^{<t−1>}$ with $s^{<t>}$ as an input to this neural network. This is because $s^{<t>}$ depends on $\alpha^{<t,t'>}$ which in turn depends on and $e^{<t,t'>}$; so at the time we need to evaluate this network, we haven't computed $s^{<t>}$.
+
+**What is $a^{<t,t'>}$ in attention model?**
+
+$a^{<t,t'>} = \frac{exp(e^{<t,t'>})}{\sum^{T_x}_{t'=1} exp(e^{<t,t'>})}$
+
+ > $a^{<t,t'>}$ is equal to the amount of attention of $y^{<t>}$ should pay to $a^{<t'>}$
