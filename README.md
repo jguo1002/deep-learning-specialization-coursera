@@ -817,7 +817,7 @@ Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [
 
 **What the four steps of sampling?**
 
-> 1. Input the "dummy" vector of zeros  <img src="https://latex.codecogs.com/png.latex?\color{white}𝑥^{<1>}=\vec{0}"> and <img src="https://latex.codecogs.com/png.latex?\color{white}a^{<0>}=\vec{0}">
+> 1. Input the "dummy" vector of zeros  <img src="https://latex.codecogs.com/png.latex?\color{white}x^{<1>}=\vec{0}"> and <img src="https://latex.codecogs.com/png.latex?\color{white}a^{<0>}=\vec{0}">
 > 2. Run one step of forward pass to get <img src="https://latex.codecogs.com/png.latex?\color{white}a^{<t+1>}"> and <img src="https://latex.codecogs.com/png.latex?\color{white}\hat{y}^{<t+1>}">
 > 3. Sampling the next index with the probability in <img src="https://latex.codecogs.com/png.latex?\color{white}\hat{y}^{<t+1>}">. Use `np.random.choice`
 > 4. Update to <img src="https://latex.codecogs.com/png.latex?\color{white}x^{<t>}">. Set `x[idx] = 1`
@@ -830,9 +830,8 @@ Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [
 
 **How to pick beam width?**
 
-> Large beam width: better result, slower
->
-> Small beam width: worse result: faster
+> - Large beam width: better result, slower
+> - Small beam width: worse result: faster
 
 **How to figure if it's RNN or beam search fails the translation task?**
 
@@ -841,6 +840,20 @@ Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [
 > <img src="https://latex.codecogs.com/png.latex?\color{white}P(\hat{y}|x)"> > <img src="https://latex.codecogs.com/png.latex?\color{white}P(y^*|x)"> -> RNN
 > 
 > <img src="https://latex.codecogs.com/png.latex?\color{white}P(\hat{y}|x)"> < <img src="https://latex.codecogs.com/png.latex?\color{white}P(y^*|x)"> -> beam search
+
+
+**How does sentence normalization affect beam search result?**
+
+> If we carry out beam search without using sentence normalization, the algorithm will tend to output overly short translations.
+
+**What does <img src="https://latex.codecogs.com/png.latex?\color{white}\alpha^{<t,t'>}"> denote in attention model?**
+
+<img src="https://latex.codecogs.com/png.latex?\color{white}\alpha^{<t,t'>} = \frac{exp(e^{<t,t'>})}{\sum^{T_x}_{t'=1} exp(e^{<t,t'>})}">
+
+> <img src="https://latex.codecogs.com/png.latex?\color{white}\alpha^{<1,2>}"> denotes when computing the output first word, how much attention should be paid on the input second word. 
+>
+> <img src="https://latex.codecogs.com/png.latex?\color{white}\alpha^{<t,t'>}"> is the amount of attention of <img src="https://latex.codecogs.com/png.latex?\color{white}y^{<t>}"> should pay to <img src="https://latex.codecogs.com/png.latex?\color{white}a^{<t'>}">
+
 
 **The attention model performs the same as the encoder-decoder model, no matter the sentence length. True/False?**
 
@@ -851,16 +864,12 @@ Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [
 > 
 > The attention model has the greatest advantage when the input sequence length <img src="https://latex.codecogs.com/png.latex?\color{white}T_x"> is large.
 
-**How does sentence normalization affect beam search result?**
+**The network learns where to “pay attention” by learning the values <img src="https://latex.codecogs.com/png.latex?\color{white}e^{<t,t'>}">, which are computed using a small neural network: We can replace <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t-1>}"> with <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t>}"> as an input to this neural network because <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t>}"> is independent of <img src="https://latex.codecogs.com/png.latex?\color{white}\alpha^{<t,t'>}"> and <img src="https://latex.codecogs.com/png.latex?\color{white}e^{<t,t'>}">. True/False?**
 
-> If we carry out beam search without using sentence normalization, the algorithm will tend to output overly short translations.
+ > We can't replace <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t-1>}"> with <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t>}"> because <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t>}"> depends on <img src="https://latex.codecogs.com/png.latex?\color{white}\alpha^{<t,t'>}"> which in turn depends on and <img src="https://latex.codecogs.com/png.latex?\color{white}e^{<t,t'>}">; so at the time we need to evaluate this network, we haven't computed <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t>}">.
+> 
 
-**The network learns where to “pay attention” by learning the values <img src="https://latex.codecogs.com/png.latex?\color{white}e^{<t,t’>}">, which are computed using a small neural network: We can replace <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t-1>}"> with <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t>}"> as an input to this neural network because <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t>}"> is independent of <img src="https://latex.codecogs.com/png.latex?\color{white}\alpha^{<t,t’>}"> and <img src="https://latex.codecogs.com/png.latex?\color{white}e^{<t,t’>}">. True/False?**
-
- > We can't replace <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t−1>}"> with <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t>}"> as an input to this neural network. This is because <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t>}"> depends on <img src="https://latex.codecogs.com/png.latex?\color{white}\alpha^{<t,t'>}"> which in turn depends on and <img src="https://latex.codecogs.com/png.latex?\color{white}e^{<t,t'>}">; so at the time we need to evaluate this network, we haven't computed <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t>}">.
-
-**What is <img src="https://latex.codecogs.com/png.latex?\color{white}a^{<t,t'>}"> in attention model?**
-
-<img src="https://latex.codecogs.com/png.latex?\color{white}a^{<t,t'>} = \frac{exp(e^{<t,t'>})}{\sum^{T_x}_{t'=1} exp(e^{<t,t'>})}">
-
- > <img src="https://latex.codecogs.com/png.latex?\color{white}a^{<t,t'>}"> is equal to the amount of attention of <img src="https://latex.codecogs.com/png.latex?\color{white}y^{<t>}"> should pay to <img src="https://latex.codecogs.com/png.latex?\color{white}a^{<t'>}">
+- <img src="https://latex.codecogs.com/png.latex?\color{white}e">: energy variable
+- <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t-1>}">: hidden state of the post-attention LSTM | 
+- <img src="https://latex.codecogs.com/png.latex?\color{white}a^{<t'>}">: hidden state of the pre-attention LSTM 
+- <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t-1>}"> and <img src="https://latex.codecogs.com/png.latex?\color{white}a^{<t'>}"> are fed into a simple neural network, which learns the function to output <img src="https://latex.codecogs.com/png.latex?\color{white}e^{<t,t'>}">.
