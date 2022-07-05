@@ -812,15 +812,22 @@ Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [
 
 **<img src="https://latex.codecogs.com/png.latex?\color{white}A"> is an embedding matrix, <img src="https://latex.codecogs.com/png.latex?\color{white}o_{4567}"> is a one-hot vector corresponding to word 4567. Can we call <img src="https://latex.codecogs.com/png.latex?\color{white}A * o_{4567}"> in Python to get the embedding of word 4567?**
 
+<details>
+    <summary>Click to see answer</summary>
+
 > The element-wise multiplication is extremely inefficient. 
+</details>
 
-
+<br />
 **What the four steps of sampling?**
 
 > 1. Input the "dummy" vector of zeros  <img src="https://latex.codecogs.com/png.latex?\color{white}x^{<1>}=\vec{0}"> and <img src="https://latex.codecogs.com/png.latex?\color{white}a^{<0>}=\vec{0}">
 > 2. Run one step of forward pass to get <img src="https://latex.codecogs.com/png.latex?\color{white}a^{<t+1>}"> and <img src="https://latex.codecogs.com/png.latex?\color{white}\hat{y}^{<t+1>}">
 > 3. Sampling the next index with the probability in <img src="https://latex.codecogs.com/png.latex?\color{white}\hat{y}^{<t+1>}">. Use `np.random.choice`
 > 4. Update to <img src="https://latex.codecogs.com/png.latex?\color{white}x^{<t>}">. Set `x[idx] = 1`
+
+[⬆️ Back to top](#table-of-contents)
+
 
 ### Week3: Sequence Models & Attention Mechanism
 
@@ -857,6 +864,9 @@ Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [
 
 **The attention model performs the same as the encoder-decoder model, no matter the sentence length. True/False?**
 
+<details>
+    <summary>Click to see answer</summary>
+ 
 > False.
 > 
 > Sentence length ↑ ,
@@ -864,12 +874,34 @@ Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [
 > 
 > The attention model has the greatest advantage when the input sequence length <img src="https://latex.codecogs.com/png.latex?\color{white}T_x"> is large.
 
+</details>
+<br />
+
 **The network learns where to “pay attention” by learning the values <img src="https://latex.codecogs.com/png.latex?\color{white}e^{<t,t'>}">, which are computed using a small neural network: We can replace <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t-1>}"> with <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t>}"> as an input to this neural network because <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t>}"> is independent of <img src="https://latex.codecogs.com/png.latex?\color{white}\alpha^{<t,t'>}"> and <img src="https://latex.codecogs.com/png.latex?\color{white}e^{<t,t'>}">. True/False?**
 
+<details>
+    <summary>Click to see answer</summary>
+
  > We can't replace <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t-1>}"> with <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t>}"> because <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t>}"> depends on <img src="https://latex.codecogs.com/png.latex?\color{white}\alpha^{<t,t'>}"> which in turn depends on and <img src="https://latex.codecogs.com/png.latex?\color{white}e^{<t,t'>}">; so at the time we need to evaluate this network, we haven't computed <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t>}">.
-> 
+
+ </details>
+<br />
 
 - <img src="https://latex.codecogs.com/png.latex?\color{white}e">: energy variable
 - <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t-1>}">: hidden state of the post-attention LSTM | 
 - <img src="https://latex.codecogs.com/png.latex?\color{white}a^{<t'>}">: hidden state of the pre-attention LSTM 
 - <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t-1>}"> and <img src="https://latex.codecogs.com/png.latex?\color{white}a^{<t'>}"> are fed into a simple neural network, which learns the function to output <img src="https://latex.codecogs.com/png.latex?\color{white}e^{<t,t'>}">.
+
+**What are the steps of implementing attention with Keras?**
+
+<details>
+    <summary>Click to see answer</summary>
+
+> - `RepeatVector` - copy <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t-1>}"> value <img src="https://latex.codecogs.com/png.latex?\color{white}T_x"> times 
+> - `Concatenation` - concatenate <img src="https://latex.codecogs.com/png.latex?\color{white}s^{<t-1>}"> and <img src="https://latex.codecogs.com/png.latex?\color{white}a^{<t>}">
+> - `Dense` - compute <img src="https://latex.codecogs.com/png.latex?\color{white}e^{<t,t'>}">
+> - `Activation` - compute <img src="https://latex.codecogs.com/png.latex?\color{white}\alpha^{<t,t'>}"> by softmax 
+> - `Dot` - dot product of <img src="https://latex.codecogs.com/png.latex?\color{white}\alpha"> and <img src="https://latex.codecogs.com/png.latex?\color{white}a">
+
+</details>
+
