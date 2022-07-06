@@ -24,6 +24,7 @@ Notes are taken in the format of QA.
     - [Week 1: Recurrent Neural Network](#week-1-recurrent-neural-network)
     - [Week 2: Natural Language Processing & Word Embeddings](#week-2-natural-language-processing--word-embeddings)
     - [Week 3: Sequence Models & Attention Mechanism](#week3-sequence-models--attention-mechanism)
+    - [Week 4: Transformer Network](#week-4-transformer-network)
 
 
 
@@ -904,4 +905,32 @@ Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [
 > - `Dot` - dot product of <img src="https://latex.codecogs.com/png.latex?\alpha"> and <img src="https://latex.codecogs.com/png.latex?a">
 
 </details>
+<br />
 
+[⬆️ Back to top](#table-of-contents)
+
+### Week 4: Transformer Network
+
+**How does traditional attention and self-attention in Transformer differ?**
+
+> Traditional Attention was used in combination with RNNs to improve their performance. Self-attention is used INSTEAD OF RNNs and they do a much better job and are also much faster. So in that sense they are pretty different.
+> 
+> [Stackexchange | What's the difference between Attention vs Self-Attention? What problems does each other solve that the other can't?](https://datascience.stackexchange.com/questions/49468/whats-the-difference-between-attention-vs-self-attention-what-problems-does-ea)
+
+
+**What do Q, K, V denote?**
+
+> Q = interesting questions about the words in a sentence  
+> 
+> K = specific representations of words given a Q  
+> 
+> V = qualities of words given a Q
+
+
+**What are criteria for a good positional encoding algorithm?**
+
+> - It should output a unique encoding for each time-step (word's position in a sentence). 
+> 
+> - Distance between any two time-steps should be consistent for all sentence length. 
+> 
+> - The algorithm should be able to generalize to longer sentences.
