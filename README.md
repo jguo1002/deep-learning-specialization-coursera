@@ -934,3 +934,11 @@ Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [
 > - Distance between any two time-steps should be consistent for all sentence length. 
 > 
 > - The algorithm should be able to generalize to longer sentences.
+
+**What is the formula of positional encoding and what is its logic?**
+
+> <img src="https://latex.codecogs.com/png.latex?\color{white}PE_{(pos, 2i)} = sin(\frac{pos}{10000^{\frac{2i}{d_{model}}}})">
+> 
+> <img src="https://latex.codecogs.com/png.latex?\color{white}PE_{(pos, 2i+1)} = cos(\frac{pos}{10000^{\frac{2i}{d_{model}}}})">
+>
+> It records the relative positions of tokens and sums to wording embeddings. So the initial representations moves a bit towards the other tokens that are close to them. 

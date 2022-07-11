@@ -934,3 +934,11 @@ $\alpha^{<t,t'>} = \frac{exp(e^{<t,t'>})}{\sum^{T_x}_{t'=1} exp(e^{<t,t'>})}$
 > - Distance between any two time-steps should be consistent for all sentence length. 
 > 
 > - The algorithm should be able to generalize to longer sentences.
+
+**What is the formula of positional encoding and what is its logic?**
+
+> $PE_{(pos, 2i)} = sin(\frac{pos}{10000^{\frac{2i}{d_{model}}}})$
+> 
+> $PE_{(pos, 2i+1)} = cos(\frac{pos}{10000^{\frac{2i}{d_{model}}}})$
+>
+> It records the relative positions of tokens and sums to wording embeddings. So the initial representations moves a bit towards the other tokens that are close to them. 
