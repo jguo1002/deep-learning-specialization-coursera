@@ -461,9 +461,15 @@ It depends on the context, we should test with different sizes
 
 **Input is a 300 by 300 color (RGB) image, and you use a convolutional layer with 100 filters that are each 5x5. How many parameters does this hidden layer have (including the bias parameters)?**
 
+<details>
+    <summary>Click to see answer</summary>
+
 > (5 * 5 * 3 + 1) * 100 = 7,600
 > 
 > Each filter is a volume where the number of channels matches up the number of channels of the input volume.
+
+</details>
+<br >
 
 **What are the benefits of CNN?**
 > 1. It allows a feature detector to be used in multiple locations throughout the whole input volume.
