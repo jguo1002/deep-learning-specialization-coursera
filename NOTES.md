@@ -704,7 +704,9 @@ Read more:
 **Why RNN has vanishing gradients problems?**
 
 > An ouput is mainly influenced by values close to its position.  
-> It's difficult for an output to be strongly influenced by an input that is very early in the sequence. Because it's difficult to backpropagate all the wway to the beginning of the sequence. 
+> It's difficult for an output to be strongly influenced by an input that is very early in the sequence. Because it's difficult to backpropagate all the way to the beginning of the sequence. 
+> 
+> E.g., The cat, which already ate, was full. 
 
 **How to deal with exploding gradients?**
 > Apply gradients clipping. Re-scale some gradient vectors when it's bigger than some threshold. 
@@ -729,20 +731,29 @@ def optimize(X, Y, a_prev, parameters, learning_rate):
     return loss, gradients, a[len(X)-1]
 
 ```
+**How to deal with vanishing gradients?**
 
+> Vanichsing gradient problems are harder to detect and solve. Gated Recurrent Unit (GRU) is an effective solution. 
 
-**What is the formula of Gated Recurrent Unit (GRU)?**
+**What is the formula of full Gated Recurrent Unit (GRU)?**
 
+> $c^{<t>}$: memory cell 
+> 
+> $a^{<t>}$: output activation. They're the same here, but different in LSTM
+>
+> $\Gamma_r$: how *relevant* $c^{<t-1>}$ is to $\tilde{c}^{<t>}$
+> 
 > $\tilde{c}^{<t>} = tanh(W_c[\Gamma_r * c^{<t-1>}, x^{<t>}] + b_c)$
 >
-> $\Gamma_u$: updated gate, (0,1)
+> $\Gamma_u$: update gate, (0,1). Either close to 0 or 1
 >
 > $\Gamma_u = \sigma(W_u[c^{<t-1>}, x^{<t>}] + b_u)$ 
-> 
-> $\Gamma_r$: how relevant $c^{<t-1>}$ is to $\tilde{c}^{<t>}$. Same update method with $\Gamma_u$
 >
-> 
+> $\Gamma_r = \sigma(W_r[c^{<t-1>}, x^{<t>}] + b_r)$
+>
 > $c^{<t>} = \Gamma_u * \tilde{c}^{<t>} + (1-\Gamma_u) * c^{<t-1>}$
+> 
+> $a^{<t>} = c^{<t>}$
 
 Cho, K., Van Merriënboer, B., Bahdanau, D., & Bengio, Y. (2014). [On the properties of neural machine translation: Encoder-decoder approaches.](https://arxiv.org/pdf/1409.1259.pdf)
 
@@ -755,9 +766,22 @@ Hochreiter, S., & Schmidhuber, J. (1997). [Long short-term memory. Neural comput
 
 > Instead of having one update gate controls $\tilde{c}^{<t>}$ and $c^{<t-1>}$, LSTM has two separate gates $\Gamma_u$ and $\Gamma_f$ (forget gate). 
 >
-> Update $c^{<t>}$: 
+> 
+> $\Gamma_f = \sigma(W_f[c^{<t-1>}, x^{<t>}] + b_f)$
+> 
+> $\Gamma_o = \sigma(W_o[c^{<t-1>}, x^{<t>}] + b_o)$
 >
+> Update $c^{<t>}$: 
+> 
 > $c^{<t>} = \Gamma_u * \tilde{c}^{<t>} + \Gamma_f * c^{<t-1>}$
+> 
+> $a^{<t>} = \Gamma_o * c^{<t>}$
+> 
+> while in GRU, it's 
+> 
+> $c^{<t>} = \Gamma_u * \tilde{c}^{<t>} + (1-\Gamma_u) * c^{<t-1>}$
+> 
+> $a^{<t>} = c^{<t>}$
 
 **What are the disadvantages of Bidirectional RNN?**
 
@@ -771,9 +795,25 @@ Hochreiter, S., & Schmidhuber, J. (1997). [Long short-term memory. Neural comput
 
 > Gradient exploding. It happens when large error gradients accumulate and result in very large updates to the NN model weights during training. These weights can become too large and cause an overflow, identified as NaN.
 
-**Sarah proposes to simplify the GRU by always removing the $\Gamma_u$. I.e., setting $\Gamma_u$ = 0. Ashely proposes to simplify the GRU by removing the $\Gamma_r$. I. e., setting $\Gamma_r$= 1 always. Which of these models is more likely to work without vanishing gradient problems even when trained on very long input sequences?**
+**Alice proposes to simplify the GRU by always removing the $\Gamma_u$. I.e., setting $\Gamma_u$ = 0. Betty proposes to simplify the GRU by removing the $\Gamma_r$. I. e., setting $\Gamma_r$= 1 always. Which of these models is more likely to work without vanishing gradient problems even when trained on very long input sequences?**
 
-> No. For the signal to backpropagate without vanishing, we need c<t> to be highly dependent on $c^{<t-1>}$.
+- Alice's model (removing $\Gamma_u$). Because if $\Gamma_r \approx 0$ for a timestep, the gradient can propagate back through that timestep without much decay.
+- Alice's model (removing $\Gamma_u$). Because if $\Gamma_r \approx 1$ for a timestep, the gradient can propagate back through that timestep without much decay.
+- Betty's model (removing $\Gamma_r$). Because if $\Gamma_u \approx 0$ for a timestep, the gradient can propagate back through that timestep without much decay.
+- Betty's model (removing $\Gamma_r$). Because if $\Gamma_u \approx 1$ for a timestep, the gradient can propagate back through that timestep without much decay.
+
+<details>
+<summary>Click to see the answer</summary>
+
+C. 
+
+For the signal to backpropagate without vanishing, we need $c^{<t>}$ to be highly dependent on $c^{<t-1>}$, meaning $\Gamma_u$ close to 0. 
+
+*Note: It's the simplied version in the lecture.*
+
+</details>
+<br />
+
 
 [⬆️ Back to top](#table-of-contents)
 
