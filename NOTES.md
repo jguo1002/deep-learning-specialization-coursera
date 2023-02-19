@@ -15,15 +15,25 @@ Notes are taken in the format of QA.
     - [Week 2: Optimization Algorithms](#week-2-optimization-algorithms)
     - [Week 3: Hyperparameter Tuning, Batch Normalization and Programming Frameworks](#week-3-hyperparameter-tuning-batch-normalization-and-programming-frameworks)
 - [Course 3: Structuring Machine Learning Projects](#course-3-structuring-machine-learning-projects)
+    - [Week 1: ML Strategy 1](#week-1-ml-strategy-1)
+    - [Week 2: ML Strategy 2](#week-1-ml-strategy-2)
 - [Course 4: Convolutional Neural Networks](#course-4-convolutional-neural-networks)
     - [Week 1: Foundations of Convolutional Neural Networks](#week-1-foundations-of-convolutional-neural-networks)
+        - Programming: Convolutional Model, Step by Step
+        - Programming: Convolution Model Application
     - [Week 2: Deep Convolutional Models: Case Studies](#week-2-deep-convolutional-models-case-studies)
+        - Programming: Residual Networks
+        - Programming: Transfer Learning with MobileNet
     - [Week 3: Detection Algorithms](#week-3-detection-algorithms)
+        - Programming: Car Detection with YOLO
+        - Programming: Image Segmentation with U-Net
     - [Week 4: Face Recognition](#week-4-face-recognition)
+        - Programming: Face Recognition
+        - Programming: Art Generation with Neural Style Transfer
 - [Course 5: Sequence Model](#course-5-sequence-model)
     - [Week 1: Recurrent Neural Network](#week-1-recurrent-neural-network)
     - [Week 2: Natural Language Processing & Word Embeddings](#week-2-natural-language-processing--word-embeddings)
-    - [Week 3: Sequence Models & Attention Mechanism](#week3-sequence-models--attention-mechanism)
+    - [Week 3: Sequence Models & Attention Mechanism](#week-3-sequence-models--attention-mechanism)
     - [Week 4: Transformer Network](#week-4-transformer-network)
 
 
@@ -364,7 +374,7 @@ It depends on the context, we should test with different sizes
 
 ## Course 3: Structuring Machine Learning Projects
 
-### Week 1
+### Week 1: ML Strategy 1
 
 **What are the types of metrics?**
 
@@ -394,7 +404,7 @@ It depends on the context, we should test with different sizes
 
 > Rethink the appropriate metric for this task, and ask your team to tune to the new metric.
 
-### Week 2
+### Week 2: ML Strategy 2
 
 **A softmax activation would be a good choice for the output layer if this is a multi-task learning problem. True/False?**
 
@@ -467,6 +477,10 @@ It depends on the context, we should test with different sizes
 > (5 * 5 * 3 + 1) * 100 = 7,600
 > 
 > Each filter is a volume where the number of channels matches up the number of channels of the input volume.
+> 
+> Parameters are the variables that need to be learnt when training a model. 
+> 
+> Parameter count of one filter: (Height × Width × Depth) + bias
 
 </details>
 <br >
@@ -475,11 +489,13 @@ It depends on the context, we should test with different sizes
 > 1. It allows a feature detector to be used in multiple locations throughout the whole input volume.
 > 
 > 2. Convolutional layers provide sparsity of connections.
+> 
+> 3. Invariance 
 
 **What does “sparsity of connections” mean?**
 > Each activation in the next layer depends on only a small number of activations from the previous layer.
 > 
-> Yes, each activation of the output volume is computed by multiplying the parameters from only one filter with a volumic slice of the input volume and then summing all these together. 
+> Each activation of the output volume is computed by multiplying the parameters from only one filter with a volumic slice of the input volume and then summing all these together. 
 
 
 
@@ -803,13 +819,13 @@ Hochreiter, S., & Schmidhuber, J. (1997). [Long short-term memory. Neural comput
 - Betty's model (removing $\Gamma_r$). Because if $\Gamma_u \approx 1$ for a timestep, the gradient can propagate back through that timestep without much decay.
 
 <details>
-<summary>Click to see the answer</summary>
+    <summary>Click to see the answer</summary>
 
-C. 
-
-For the signal to backpropagate without vanishing, we need $c^{<t>}$ to be highly dependent on $c^{<t-1>}$, meaning $\Gamma_u$ close to 0. 
-
-*Note: It's the simplied version in the lecture.*
+> C. 
+> 
+> For the signal to backpropagate without vanishing, we need $c^{<t>}$ to be highly dependent on $c^{<t-1>}$, meaning $\Gamma_u$ close to 0. 
+> 
+> *Note: It's the simplied version in the lecture.*
 
 </details>
 <br />
@@ -876,7 +892,7 @@ Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [
 [⬆️ Back to top](#table-of-contents)
 
 
-### Week3: Sequence Models & Attention Mechanism
+### Week 3: Sequence Models & Attention Mechanism
 
 **Why not use greedy search?**
 
@@ -935,7 +951,7 @@ $\alpha^{<t,t'>} = \frac{exp(e^{<t,t'>})}{\sum^{T_x}_{t'=1} exp(e^{<t,t'>})}$
 <br />
 
 - $e$: energy variable
-- $s^{<t-1>}$: hidden state of the post-attention LSTM | 
+- $s^{<t-1>}$: hidden state of the post-attention LSTM 
 - $a^{<t'>}$: hidden state of the pre-attention LSTM 
 - $s^{<t-1>}$ and $a^{<t'>}$ are fed into a simple neural network, which learns the function to output $e^{<t,t'>}$.
 
