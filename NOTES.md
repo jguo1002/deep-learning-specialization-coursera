@@ -1,15 +1,18 @@
 # Coursera Deep Learning Specialization
-Coursera deep learning specialization notes and code
-
-[Coursera Specialization Page](https://www.coursera.org/specializations/deep-learning#courses)
+Coursera deep learning specialization notes and code 
+[[Specialization Page](https://www.coursera.org/specializations/deep-learning#courses)]
 
 Notes are taken in the format of QA. 
+
+Move to [Note.md](NOTES.md) since some formula images are not rendered 😢
 
 ## Table of Contents
 
 - [Course 1: Neural Networks and Deep Learning](#course-1-neural-networks-and-deep-learning)
     - [Week 3: Shallow Neural Networks](#week-3-shallow-neural-networks)
     - [Week 4: Deep Neural Networks](#week-4-deep-neural-networks)
+        - Programming: Building your Deep Neural Network: Step by Step ([Code](./code/C1WK4_Build_L_Layer_DNN_Step_by_Step.ipynb))
+        - Programming: Deep Neural Network - Application
 - [Course 2: Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization](#course-2-improving-deep-neural-networks)
     - [Week 1: Practical Aspects of Deep Learning](#week-1-practical-aspects-of-deep-learning)
     - [Week 2: Optimization Algorithms](#week-2-optimization-algorithms)
@@ -20,7 +23,7 @@ Notes are taken in the format of QA.
 - [Course 4: Convolutional Neural Networks](#course-4-convolutional-neural-networks)
     - [Week 1: Foundations of Convolutional Neural Networks](#week-1-foundations-of-convolutional-neural-networks)
         - Programming: Convolutional Model, Step by Step
-        - Programming: Convolution Model Application
+        - Programming: Convolution Model Application ([Keras](./code/C4WK1A2_CNN_application_Keras.ipynb))([Pytorch](./code/C4WK1A2_CNN_application_PyTorch.ipynb))
     - [Week 2: Deep Convolutional Models: Case Studies](#week-2-deep-convolutional-models-case-studies)
         - Programming: Residual Networks
         - Programming: Transfer Learning with MobileNet
@@ -32,10 +35,24 @@ Notes are taken in the format of QA.
         - Programming: Art Generation with Neural Style Transfer
 - [Course 5: Sequence Model](#course-5-sequence-model)
     - [Week 1: Recurrent Neural Network](#week-1-recurrent-neural-network)
+        - Programming: Building your Recurrent Neural Network - Step by Step
+        - Programming: Dinosaur Island-Character-Level Language Modeling
+        - Programming: Jazz Improvisation with LSTM
     - [Week 2: Natural Language Processing & Word Embeddings](#week-2-natural-language-processing--word-embeddings)
+        - Programming: Operations on Word Vectors - Debiasing
+        - Programming: Emojify
     - [Week 3: Sequence Models & Attention Mechanism](#week-3-sequence-models--attention-mechanism)
+        - Programming: Neural Machine Translation
+        - Programming: Trigger Word Detection
     - [Week 4: Transformer Network](#week-4-transformer-network)
+        - Programming: Transformers Architecture with TensorFlow
+        - Lab: Transformer Pre-processing
+        - Lab: Transformer Network Application: Named-Entity Recognition
+        - Lab: Transformer Network Application: Question Answering
+        - Lab: Transformers using Trax Library
 
+
+---
 
 
 ## Course 1: Neural Networks and Deep Learning 
@@ -972,6 +989,10 @@ $\alpha^{<t,t'>} = \frac{exp(e^{<t,t'>})}{\sum^{T_x}_{t'=1} exp(e^{<t,t'>})}$
 [⬆️ Back to top](#table-of-contents)
 
 ### Week 4: Transformer Network
+
+**More Resources**
+- [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)
+- [Illustrated Guide to Transformers Neural Network: A step by step explanation](https://www.youtube.com/watch?v=4Bdc55j80l8)
 
 **How does traditional attention and self-attention in Transformer differ?**
 
