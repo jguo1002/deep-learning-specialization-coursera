@@ -992,22 +992,61 @@ Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [
 
 **More Resources**
 - [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)
-- [Illustrated Guide to Transformers Neural Network: A step by step explanation](https://www.youtube.com/watch?v=4Bdc55j80l8)
+- [YouTube | Illustrated Guide to Transformers Neural Network: A step by step explanation](https://www.youtube.com/watch?v=4Bdc55j80l8)
 
 **How does traditional attention and self-attention in Transformer differ?**
 
-> Traditional Attention was used in combination with RNNs to improve their performance. Self-attention is used INSTEAD OF RNNs and they do a much better job and are also much faster. So in that sense they are pretty different.
+
+<details>
+    <summary>Click to see answer</summary>
+
+> Traditional Attention was used in combination with RNNs to improve their performance. Self-attention is used INSTEAD OF RNNs and they do a much better job and are also much faster.
 > 
 > [Stackexchange | What's the difference between Attention vs Self-Attention? What problems does each other solve that the other can't?](https://datascience.stackexchange.com/questions/49468/whats-the-difference-between-attention-vs-self-attention-what-problems-does-ea)
 
+</details>
+
+<br/>
+
+**Why self-attention is used in Transformer?**
+
+<details>
+    <summary>Click to see answer</summary>
+
+> RNNs process sequences word by word, with the state of the RNN changing as each new word is processed. This allows the RNN to carry forward information from previous words. However, this kind of mechanism faces challenges like vanishing gradients when the sequence gets longer.
+> 
+> Self-attention mechanism allows the model to consider all words at once and assess the interdependencies between them, regardless of their distance in the sequence. This makes Transformers particularly useful for many natural language processing tasks, as the meaning of a word in natural language can depend on other words in the sentence, no matter how far apart they may be.
+
+
+</details>
+
+<br/>
 
 **What do Q, K, V denote?**
+
+<details>
+    <summary>Click to see answer</summary>
 
 > Q = interesting questions about the words in a sentence  
 > 
 > K = specific representations of words given a Q  
 > 
 > V = qualities of words given a Q
+
+</details>
+
+<br/>
+
+**What's the differences that RNN, Seq2Seq with attention, and transformer handle long sequences?**
+
+(May not be correct 😅)
+
+| Model	 | Approach to Handle Long Sequences |	Main Issues | 
+| -- | -- | -- |
+| Traditional RNN   | Info is passed through hidden states between time steps.	|  Difficulty handling long-distance dependencies, prone to vanishing or exploding gradients. |
+| Seq2Seq (with Attention)	| Utilizes attention mechanism to reference all parts of the input sequence during decoding.	| Still reliant on the recursive structure of RNNs, potentially leading to vanishing/exploding gradients when handling long sequences. The attention computation is constrained between the input sequence and output sequence, limiting parallel processing capability.| 
+| Transformer | Processes all elements of the sequence in parallel through the self-attention mechanism, each element can directly reference all other elements regardless of sequence length.	| Computational requirements grow with the square of the sequence length, which may pose difficulties in handling ultra-long sequences. Also, the lack of explicit sequential information encoding could lead to performance degradation in some tasks.
+|
 
 
 **What are criteria for a good positional encoding algorithm?**
