@@ -45,12 +45,13 @@ Move to [Note.md](NOTES.md) since some formula images are not rendered 😢
         - Programming: Neural Machine Translation
         - Programming: Trigger Word Detection
     - [Week 4: Transformer Network](#week-4-transformer-network)
-        - Programming: Transformers Architecture with TensorFlow
+        - Programming: Transformers Architecture with TensorFlow ([Keras](./code/C5WK4A1_Transformer_Keras.ipynb))
         - Lab: Transformer Pre-processing
         - Lab: Transformer Network Application: Named-Entity Recognition
         - Lab: Transformer Network Application: Question Answering
         - Lab: Transformers using Trax Library
-
+- [Further Exploration](#further-exploration)
+    - [Vision Transformer](#vision-transformer)
 
 ---
 
@@ -1064,3 +1065,13 @@ Bolukbasi, T., Chang, K. W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). [
 > <img src="https://latex.codecogs.com/png.latex?PE_{(pos, 2i+1)} = cos(\frac{pos}{10000^{\frac{2i}{d_{model}}}})">
 >
 > It records the relative positions of tokens and sums to wording embeddings. So the initial representations moves a bit towards the other tokens that are close to them. 
+
+
+## Further Exploration
+
+### Vision Transformer
+
+Resources:
+- Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., ... & Houlsby, N. (2020). [An image is worth 16x16 words: Transformers for image recognition at scale](https://arxiv.org/pdf/2010.11929.pdf). arXiv preprint arXiv:2010.11929.
+- Brian Pulfer. 2022. [Vision Transformers from Scratch (PyTorch): A step-by-step guide](https://medium.com/mlearning-ai/vision-transformers-from-scratch-pytorch-a-step-by-step-guide-96c3313c2e0c). MLearning.ai.
+- Francesco Zuppichini. 2021. [Vision Transformers from Scratch (PyTorch): A step-by-step guide](https://medium.com/mlearning-ai/vision-transformers-from-scratch-pytorch-a-step-by-step-guide-96c3313c2e0c). Towards Data Science
